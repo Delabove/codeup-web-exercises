@@ -7,9 +7,9 @@
 <body>
 <form method="POST" action="https://request-inspector.glitch.me/">
     <label for="email">Email:</label>
-    <input type="text" name="email" placeholder="Enter your email address">
+    <input id="email" type="text" name="email" placeholder="Enter your email address">
     <label for="password">Password:</label>
-    <input type="password" name="password" placeholder="Enter your your password">
+    <input id="password" type="password" name="password" placeholder="Enter your your password">
     <button type="submit">Submit</button>
 </form>
 <br>
@@ -23,10 +23,21 @@
 
 <form method="POST" action="https://request-inspector.glitch.me/">
     How did you hear about us?<br>
-    <input type="radio" name="traffic-info1" value="Billboard"> Billboard<br>
-    <input type="radio" name="traffic-info2" value="Radio advertisement">Radio Advertisement<br>
-    <input type="radio" name="traffic-info3" value="Internet advertisement">Internet Advertisement<br>
-    <input type="radio" name="traffic-info4" value="Other">Other<br>
+    <label for="traffic-info"> <input id="traffic-info" type="radio" name="traffic-info" value="Billboard"> Billboard</label><br>
+    <label for="traffic-info"><input id="traffic-info" type="radio" name="traffic-info" value="Radio advertisement">Radio Advertisement</label><br>
+    <label for="traffic-info"><input id="traffic-info" type="radio" name="traffic-info" value="Internet advertisement">Internet Advertisement</label><br>
+    <label for="traffic-info"><input id="traffic-info" type="radio" name="traffic-info" value="Other">Other</label><br>
+    <button type="submit">Submit</button>
+</form>
+
+<br>
+
+<form method="POST" action="https://request-inspector.glitch.me/">
+    How did you hear about us?<br>
+    <label for="traffic-info"> <input id="traffic-info" type="checkbox" name="traffic-info" value="billboard"> Billboard</label><br>
+    <label for="traffic-info"><input id="traffic-info" type="checkbox" name="traffic-info" value="radio advertisement" >Radio Advertisement</label><br>
+    <label for="traffic-info"><input id="traffic-info" type="checkbox" name="traffic-info" value="internet advertisement">Internet Advertisement</label><br>
+    <label for="traffic-info"><input id="traffic-info" type="checkbox" name="traffic-info" value="other">Other</label><br>
     <button type="submit">Submit</button>
 </form>
 
@@ -34,14 +45,18 @@
 
 <form method="POST" action="https://request-inspector.glitch.me/">
     <label for="web browser">What web browser are you using?</label>
-    <select name="web browser preference">
-        <option value="chrome">Google Chrome</option>
-        <option value="safari">Safari</option>
-        <option value="chrome">Mozilla Firefox</option>
+    <select name="web browser" id="web browser">
+        <option  value="chrome">Google Chrome</option>
+        <option  value="safari">Safari</option>
+        <option  value="chrome">Mozilla Firefox</option>
     </select>
     <button type="submit">Submit</button>
-
 </form>
+
+    <br>
+    <br>
+
+
 
 
 </body>
