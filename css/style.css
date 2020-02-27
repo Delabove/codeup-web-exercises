@@ -3,8 +3,57 @@ multi
 line
 comment
 */
+body {
+    background-color: lightblue;
+    background-image: url("../imgs/webb.png");
+    background-size: 500px;
+    font-family: Copperplate;
+}
+
+
+h1.fancy-header {
+    color: dodgerblue;
+    text-align: center;
+}
+
+h1, h2 {
+    color: dimgray;
+    text-decoration: underline;
+}
+
+em strong {
+    color: fuchsia;
+    text-align: center;
+    font-weight: bolder;
+}
 
 .fancy-header {
     color: purple; /* single line comment */
     text-decoration: underline;
+}
+
+ul {
+    list-style-type: square;
+}
+
+ol {
+    list-style-type: upper-alpha;
+}
+
+table th {
+    text-align: center;
+    padding-right: 60px;
+}
+
+table td  {
+    padding-right: 40px;
+}
+
+footer  {
+    color: deeppink;
+    font-size: 20px;
+}
+
+a:hover {
+    color: fuchsia;
 }
