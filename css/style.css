@@ -16,10 +16,13 @@ h1.fancy-header {
     text-align: center;
 }
 
-h1, h2 {
+h2 {
     color: dimgray;
     text-decoration: underline;
+    text-align: center;
 }
+
+
 
 em strong {
     color: fuchsia;
@@ -30,6 +33,13 @@ em strong {
 .fancy-header {
     color: purple; /* single line comment */
     text-decoration: underline;
+    text-align: center;
+}
+
+div.angry-dog {
+    background-color: deeppink;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 ul {
@@ -40,13 +50,21 @@ ol {
     list-style-type: upper-alpha;
 }
 
+table {
+    font-size: 30px;
+
+}
+
 table th {
     text-align: center;
     padding-right: 60px;
+    text-decoration: underline;
+    color: dodgerblue;
 }
 
 table td  {
     padding-right: 40px;
+    color: mediumslateblue;
 }
 
 footer  {
