@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+img {
+    float: left;
+    margin-top: .5em;
+    padding: 1em;
+}
+.nav {
+    list-style-type: none;
+    padding: 1em;
+    background-color: black;
+
+}
+
+.nav-item   {
+    display: inline-block;
+    margin-top: .5em;
+    padding: .5em;
+    color: white;
+}
+
+.about-nav {
+    display: inline-block;
+}
+
+.about  {
+    display: inline-block;
+    font-size: larger;
+    font-weight: bolder;
+
+}
+
+.about-nav-item {
+    list-style-type: none;
+    display: inline-block;
+}
