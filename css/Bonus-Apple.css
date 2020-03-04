@@ -16,7 +16,8 @@ img {
 
 }
 
-.nav-item   {
+.nav-item
+{
     display: inline-block;
     margin: .5em;
     padding: .5em;
@@ -46,6 +47,7 @@ img {
     display: inline-block;
     text-decoration: none;
     padding: 0 .5em;
+
 
 }
 
