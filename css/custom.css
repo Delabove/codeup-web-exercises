@@ -1,0 +1,46 @@
+.nav-link {
+    align-items: center;
+    justify-content: center;
+    padding-top: 1em;
+}
+
+.profile-image {
+    padding-right: .5em;
+
+}
+.bg-pizza {
+    background-image: url("../imgs/pizza.png");
+    background-size: cover;
+}
+
+#welcome-title  {
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100%;
+    text-align: center;
+
+}
+
+.jumbotron {
+    width: 100%;
+
+
+}
+
+.card {
+    /*padding: 1.5rem;*/
+    /*margin-right: 0;*/
+    /*margin-left: 0;*/
+    /*border-width: .2rem;*/
+}
+
+.btn    {
+    align-items: ;
+}
+
+
+@media screen and (max-width: 600px) {
+    div.example {
+        display: none;
+    }
+}
+

@@ -52,34 +52,56 @@ header ul li {
 }
 
 .grid > .menu {
+    margin: 0;
+    padding: 0;
     display: grid;
-    grid-area:  2 / 1 / 7 / 2;
     background-color: lightgrey;
+    grid-column: 1 / span 1;
+    grid-row: 2 / 7;
+    text-align: center;
 }
 
 .menu-nav {
-    display: grid;
-    grid-row: 2  / 2;
-    grid-column: 1 / 7 ;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-start;
+    font-family: "Open Sans";
 
 }
 
-
-.menu {
-
+h3  {
+    margin: 0;
+    padding-top: .5em;
+    padding-bottom: 2em;
 }
+li {
+    margin: 0;
+    padding-right: 3em;
+    padding-bottom: 2em;
 
+ }
 
 .grid > .content {
     display: grid;
     grid-area: 2 / 2 / 5 / 5;
     background-color: white;
+    margin: 0 2em;
+    padding: 0;
 }
 
 .grid > .ads {
     display: grid;
     grid-area: 5 / 5 / 2 /-1;
     background-color: #eeece9;
+    justify-content: center;
+
+}
+
+.fa-audio-description {
+    width: 200%;
 }
 
 .grid > .social {
