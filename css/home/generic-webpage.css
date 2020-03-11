@@ -60,7 +60,9 @@ header ul li {
     grid-row: 2 / 7;
     text-align: center;
 }
-
+section.menu-nav {
+    margin-right: 10px;
+}
 .menu-nav {
     margin: 0;
     display: flex;
@@ -77,11 +79,19 @@ h1  {
     font-family: "Open Sans";
 }
 
+h2  {
+    font-family: sans-serif;
+    font-weight: lighter;
+    color: #0a938b;
+}
+
 h3  {
     margin: 0;
     padding-top: .5em;
     padding-bottom: 2em;
+
 }
+
 li {
     margin: 0;
     padding-right: 3em;
@@ -89,12 +99,17 @@ li {
 
  }
 
+section.main {
+
+}
 .grid > .content {
     display: grid;
     grid-area: 2 / 2 / 5 / 5;
     background-color: white;
     margin: 0 2em;
     padding: 0;
+    font-family: sans-serif;
+
 }
 
 .grid > .ads {
