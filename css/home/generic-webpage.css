@@ -72,6 +72,11 @@ header ul li {
 
 }
 
+h1  {
+    padding-top: 10px;
+    font-family: "Open Sans";
+}
+
 h3  {
     margin: 0;
     padding-top: .5em;
@@ -96,12 +101,36 @@ li {
     display: grid;
     grid-area: 5 / 5 / 2 /-1;
     background-color: #eeece9;
-    justify-content: center;
+
 
 }
 
-.fa-audio-description {
-    width: 200%;
+div.box4.ads {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0;
+
+}
+
+.fa-square-full {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0;
+}
+
+
+
+/*.ad1 {*/
+/*    padding-top: 4px;*/
+/*}*/
+
+.ad4 {
+    padding-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 .grid > .social {
