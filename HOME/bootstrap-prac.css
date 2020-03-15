@@ -2,8 +2,13 @@
     box-sizing: border-box;
 }
 
-h3.top-head  {
-    font-family: "montserrat", sans-serif;
+h1.top-head  {
+    font-family: 'News Cycle', sans-serif;
 
 
+}
+
+.btn {
+    font-size: 13px;
+    text-align: center;
 }
