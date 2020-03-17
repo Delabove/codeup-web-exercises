@@ -50,9 +50,14 @@ var random = Math.floor((Math.random() * 3) + 1);
 
 /**
  * TODO:
- * Create a function called 'isTwo' that takes a number as a parameter.
+ // * Create a function called 'isTwo' that takes a number as a parameter.
+ *
+
+ *
  * The function should return a boolean value based on whether or not the passed
  * number is the number 2.
+ *
+ * return
  *
  * Example
  * > isTwo(1) // returns false
@@ -63,8 +68,15 @@ var random = Math.floor((Math.random() * 3) + 1);
  *
  * console.log *outside of the function* to check your work (you should see a
  * different result everytime you refresh the page if you are using the random
- * number)
+ * number
  */
+var passedNumber = 2;
+var
+
+ function isTwo(number); {
+    return  isTwo(2) 
+}
+
 
 /**
  * TODO:
@@ -77,7 +89,9 @@ var random = Math.floor((Math.random() * 3) + 1);
  * > calculateTip(0.25, 25.50) // returns 6.37
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
+function calculateTip() {
 
+}
 /**
  * TODO:
  * Use prompt and alert in combination with your calculateTip function to
