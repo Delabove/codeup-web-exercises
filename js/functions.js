@@ -70,13 +70,20 @@ var random = Math.floor((Math.random() * 3) + 1);
  * different result everytime you refresh the page if you are using the random
  * number
  */
-var passedNumber = 2;
-var
 
- function isTwo(number); {
-    return  isTwo(2) 
+//  function isTwo(number); {
+//     var passedNumber = false;
+//     return
+// }
+
+function isTwo() {
+    var passedNumber = 2;
+    var anyOtherNumber = 0;
+    return passedNumber === 2 && passedNumber !== anyOtherNumber;
 }
-
+console.log(isTwo(1));
+console.log(isTwo(2));
+console.log(isTwo(3));
 
 /**
  * TODO:
@@ -89,15 +96,35 @@ var
  * > calculateTip(0.25, 25.50) // returns 6.37
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
-function calculateTip() {
+function calculateTip(cost) {
+    var billAmount = (20);
+    var tipPercentage= (.20);
+    var tip= (billAmount * tipPercentage);
+    return tip;
 
 }
+
+console.log(calculateTip(20));
+
+
 /**
  * TODO:
  * Use prompt and alert in combination with your calculateTip function to
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
+//
+function calculateTip(cost) {
+    var billAmount = prompt("What was the total of your bill?")
+    console.log(billAmount)
+    var tipPercentage = prompt("What percentage would you like to tip your server?")
+    console.log(tipPercentage)
+    var tip= (billAmount * tipPercentage);
+    console.log(billAmount * tipPercentage);
+    alert("The tip to add to your bill is " + "$" + tip);
+}
+
+console.log(calculateTip());
 
 /**
  * TODO:
@@ -113,3 +140,14 @@ function calculateTip() {
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+function applyDiscount(price) {
+    var beforeDiscount = (100);
+    var discountPercentage = (.20);
+    var discountApplied = (beforeDiscount * discountPercentage);
+    var afterDiscount = (beforeDiscount - discountApplied);
+    return afterDiscount;
+
+}
+
+console.log(applyDiscount(100));
+
