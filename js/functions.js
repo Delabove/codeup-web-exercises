@@ -1,5 +1,7 @@
 "use strict";
 
+console.log("Functions js file");
+
 /**
  * TODO:
  * Create a function called 'sayHello' that takes a parameter 'name'.
@@ -71,19 +73,18 @@ var random = Math.floor((Math.random() * 3) + 1);
  * number
  */
 
-//  function isTwo(number); {
-//     var passedNumber = false;
-//     return
-// }
 
-function isTwo() {
-    var passedNumber = 2;
-    var anyOtherNumber = 0;
-    return passedNumber === 2 && passedNumber !== anyOtherNumber;
+
+function isTwo(aNumber) {
+    return 2 === aNumber;
 }
 console.log(isTwo(1));
 console.log(isTwo(2));
 console.log(isTwo(3));
+
+console.log(isTwo('random = ' + random, isTwo(random)));
+console.log(isTwo(random));
+console.log(isTwo(random));
 
 /**
  * TODO:
@@ -96,16 +97,16 @@ console.log(isTwo(3));
  * > calculateTip(0.25, 25.50) // returns 6.37
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
-function calculateTip(cost) {
-    var billAmount = (20);
-    var tipPercentage= (.20);
-    var tip= (billAmount * tipPercentage);
-    return tip;
+function calculateTip(tip, total) {
+    return tip * total;
 
 }
 
 console.log(calculateTip(20));
 
+calculateTip(0.20, 20) // returns 4
+calculateTip(0.25, 25.50) // returns 6.37
+calculateTip(0.15, 33.42) // returns 5.013
 
 /**
  * TODO:
@@ -114,14 +115,18 @@ console.log(calculateTip(20));
  * then display the dollar amount they should tip
  */
 //
-function calculateTip(cost) {
+function calculateTip(tip,total) {
+
     var billAmount = prompt("What was the total of your bill?")
-    console.log(billAmount)
+    console.log(billAmount);
+
     var tipPercentage = prompt("What percentage would you like to tip your server?")
-    console.log(tipPercentage)
-    var tip= (billAmount * tipPercentage);
+    console.log(tipPercentage);
+
+    var tipTotal= (billAmount * tipPercentage);
     console.log(billAmount * tipPercentage);
-    alert("The tip to add to your bill is " + "$" + tip);
+
+    alert("The tip to add to your bill is " + "$" + tipTotal);
 }
 
 console.log(calculateTip());
@@ -140,14 +145,9 @@ console.log(calculateTip());
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
-function applyDiscount(price) {
-    var beforeDiscount = (100);
-    var discountPercentage = (.20);
-    var discountApplied = (beforeDiscount * discountPercentage);
-    var afterDiscount = (beforeDiscount - discountApplied);
-    return afterDiscount;
+function applyDiscount(price, discount) {
+    return price - (price * discount);
 
 }
 
-console.log(applyDiscount(100));
-
+console.log(applyDiscount(45.99, 0.12) ); // 40.4712
