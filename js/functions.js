@@ -151,3 +151,8 @@ function applyDiscount(price, discount) {
 }
 
 console.log(applyDiscount(45.99, 0.12) ); // 40.4712
+
+var enterNumber = confirm("would you like to enter number?");
+    if (enterNumber) {
+         prompt("please enter number");
+    }
