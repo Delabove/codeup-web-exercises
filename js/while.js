@@ -10,10 +10,10 @@ while(i <= 65536){
 // do-while loop pt 2
 
 var allCones = Math.floor(Math.random() * 50) + 50;
-var i = 1;
+// var i = 1;
 
 do {
-   console.log(Math.floor(Math.random() * 5) + i);
-   i++;
-} while(i < allCones);
+   console.log(i = allCones);
+    i = 50;
+} while(i <= Math.floor(Math.random() * 5) + 1);
 
