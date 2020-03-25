@@ -36,7 +36,7 @@ console.log("Hello!")
      * Refactor your above code to use a `forEach` loop
      */
     names.forEach(function(name) {
-        console.log("Name at index " + i < names.length + " is " + name);
+        console.log("Name at index " , + name);
     });
 
     /**
@@ -53,4 +53,42 @@ console.log("Hello!")
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
 
+    function first( param ) {
+        return param[0];
+    }
+     var result = first([1, 2, 3, 4, 5]);
+    console.log(result === [1, 2, 3, 4, 5] [0]);
+
+
+    function  second( array ) {
+        return array[1];
+
+    }
+
+    function third(array) {
+        return array[array.length-1];
+
+    }
+
+
+
+
+
+    // TESTING
+    var numbers = [1, 2, 3, 4, 5]
+    var result = first([numbers]);
+    console.log("first test", result === numbers[0]);
+
+    result = first(names);
+    console.log(result === 'Delayne')
+
+    result = second (numbers);
+    console.log( ' 1: secong(' , result === 2);
+    result = second(names);
+    console.log('2: second()', result === "Jacques" )
+
+    result = third(numbers);
+    console.log('1: last() ' , result === 5);
+    result = third(names);
+    console.log('2: last ()')
 })();
