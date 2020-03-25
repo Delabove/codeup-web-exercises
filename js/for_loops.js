@@ -1,27 +1,39 @@
 // For loop exercise pt 2
 
 function showMultiplicationTable(num) {
-    console.log(num * 1, 10);
+    // this is the multiplication table
+    for(var i = 1; i <= 10; i++) {
+        var answer = num * i;
+
+        console.log(num + ' x ' + i + ' = ' + answer);
+    }
+
+    showMultiplicationTable( 7);
+
+
+
+    // console.log(num * 1, 10);
 
 }
 // var i = 1; i <= 10; i++
 
 
 // for loop pt 3
+var allNumber =Math.floor(Math.random() * 200) + 20;
 
-
-for( var i = 20; i <= Math.floor(Math.random() * 200) + 20; i++) {
+for( var i = 10; i < 10; i++) {
  console.log(i % 2 === 0 + "is even." || i % 2 !==0  + "is odd" );
 }
 
-    // for ( var i = 0; i<= 5; i++) {
-    //     console.log('Count form 0 to 5 (inclusive). : ' + i)
-    // }
+//>>>>>>> MAKE SURE TO GO BACK AND RECODE AFTER RUNTHROUGH <<<<<<<<
+
 
 // for loop pt 4
 
 
-// for( var i = 1; i <= 999999999; i++) {
+for( var i = 1; i <= 9; i++) {
+    console.log(i.toString().repeat(i));
+}
 //     if (i % 3 === 0 && i % 5 === 0) {
 //         console.log(1 + i)
 //     } else if (i % 3 === 0) {
