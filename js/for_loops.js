@@ -46,6 +46,6 @@ for( var i = 20; i <= Math.floor(Math.random() * 200) + 20; i++) {
 // for loop part 5
 //
 
-for(var i = 100; i >= 5; i++) {
-        console.log((i = i - 5) + i);
+for(var i = 100; i >= 5;i -=5 ) {
+        console.log(i);
 }
