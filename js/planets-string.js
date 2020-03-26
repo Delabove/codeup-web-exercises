@@ -30,9 +30,29 @@
     // var planetsString = "Mercury|Venus|Earth|Mars|Jupiter|Saturn|Uranus|Neptune";
     var planetsArray = planetsString.split("|");
 
-    planetsArray.join("<br>");
+    var planetsWithBR = planetsArray.join("<br>");
 
     console.log("planets with break tags:");
-    console.log(planetsArray);
+    console.log(planetsWithBR);
+
+
+//
+// * BONUS:
+//         * Create another string that would display your planets in an undordered
+//     * list. You will need an opening AND closing <ul> tags around the entire
+//     * string, and <li> tags around each planet.
+// //     */
+  var planetsUnorderedList =  planetsArray.join("<ul>" + "<li>" + "</li>" + "</ul>");
+
+   console.log("Unordered List Array");
+   console.log(planetsUnorderedList);
+//
+//
+
+    var planetsUL = "<ul><li>";
+    planetsUL += planetsArray.join("</li><li>");
+    planetsUL += "</li></ul>";
+    console.log(planetsUL);
+    document.write(planetsUL);
 
 })();
