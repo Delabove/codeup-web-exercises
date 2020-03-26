@@ -13,7 +13,7 @@
      */
     var planetsArray = planetsString.split("|");
 
-    console.log("String to an array:")
+    console.log("String to an array:");
     console.log(planetsArray);
 
     /**
@@ -27,8 +27,12 @@
      * string, and <li> tags around each planet.
      */
 
-    var newPlanetString = planetsArray.join("" <br> "");
+    // var planetsString = "Mercury|Venus|Earth|Mars|Jupiter|Saturn|Uranus|Neptune";
+    var planetsArray = planetsString.split("|");
+
+    planetsArray.join("<br>");
+
     console.log("planets with break tags:");
-    console.log(newPlanetString);
+    console.log(planetsArray);
 
 })();
