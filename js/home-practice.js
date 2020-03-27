@@ -40,3 +40,8 @@ function getFirstValue(arr) {
 function animals(chickens, cows, pigs) {
     return (chickens * 2) + (cows * 4) + (pigs * 4)
 }
+
+// Create a function that takes height and width and finds the perimeter of a rectangle.
+function findPerimeter(height, width) {
+    return (height + width) * 2
+}
