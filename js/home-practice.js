@@ -18,3 +18,14 @@ function remainderOfTwoNum(x,y) {
 function minToSec(minutes) {
     return minutes * 60;
 }
+
+// Write a function that takes the base and height of a triangle and return its area.
+
+function areaOfTriangle(base, height) {
+    return (base * height) / 2;
+}
+
+// Create a function that takes an array and returns the first element.
+function getFirstValue(arr) {
+    return arr[0];
+}
