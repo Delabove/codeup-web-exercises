@@ -33,3 +33,19 @@ var c = "I am a";
 a = a + 1;
 b = b + 5;
 c = c + " String!";
+
+//Modify the existing declarations and assignments so their names use camelCase.
+// Do not create any new variables.
+// Variable declarations
+var studlyCapVar;
+var properCamelCase;
+var titleCaseOver;
+
+// Variable assignments
+studlyCapVar = 10;
+properCamelCase = "A String";
+titleCaseOver = 9000;
+
+// Change the 0 so that sum will equal 20.
+var sum = 10 + 10;
+
