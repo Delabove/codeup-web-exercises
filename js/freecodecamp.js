@@ -49,3 +49,8 @@ titleCaseOver = 9000;
 // Change the 0 so that sum will equal 20.
 var sum = 10 + 10;
 
+// Change the 0 so the difference is 12.
+var difference = 45 - 33;
+
+// Change the 0 so that product will equal 80.
+var product = 8 * 100;
