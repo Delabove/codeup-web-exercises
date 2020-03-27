@@ -53,4 +53,17 @@ var sum = 10 + 10;
 var difference = 45 - 33;
 
 // Change the 0 so that product will equal 80.
-var product = 8 * 100;
+var product = 8 * 10;
+
+// Change the 0 so that the quotient is equal to 2.
+var quotient = 66 / 33;
+
+
+// Change the code to use the ++ operator on myVar.
+var myVar = 87;
+
+// Only change code below this line
+
+// myVar= myVar + 1; original statement;
+
+myVar++;
