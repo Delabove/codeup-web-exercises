@@ -103,3 +103,33 @@ let tool = 'marker';
 let writingUtensil = tool || 'pen';
 
 console.log(`The ${writingUtensil} is mightier than the sword.`);
+
+// >>>>>>>>>>>> FUNCTIONS <<<<<<<<<<<<<<<<<<<<<<<<
+
+// Let’s create a function that prints a reminder to the console. Using a function declaration, create a function called getReminder().
+function getReminder() {
+
+}
+
+// In the function body of getReminder(), log the following reminder to the console: 'Water the plants.'
+function getReminder() {
+    console.log('Water the plants.')
+}
+
+// Let’s create another function that prints a useful Spanish travel phrase to the console.
+
+    // Using a function declaration, create a function called greetInSpanish().
+
+    function greetInSpanish() {
+
+}
+
+// Add code to the function body of greetInSpanish():
+//
+// In the function body console.log() the following Spanish phrase to the console: 'Buenas Tardes.'
+
+
+function greetInSpanish() {
+    console.log('Buenas Tardes.')
+}
+
