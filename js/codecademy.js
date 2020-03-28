@@ -178,3 +178,13 @@ function monitorCount(rows, columns) {
 const numOfMonitors = monitorCount(5,4);
 
 console.log(numOfMonitors);
+
+// Create a function declaration named costOfMonitors that has two parameters, the first parameter is rows and the second parameter is columns. Leave the function body empty for now.
+// Add a return statement that returns the value of calling monitorCount(rows, columns) multiplied by 200.
+// Declare a variable named totalCost using the const keyword. Assign to totalCost the value of calling costOfMonitors() with the arguments 5 and 4 respectively.
+// To check that the function worked properly, log totalCost to the console.
+function costOfMonitors(rows,columns) {
+    return monitorCount(rows, columns) * 200;
+}
+const totalCost = costOfMonitors(5,4);
+console.log(totalCost);
