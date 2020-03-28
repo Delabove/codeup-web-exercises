@@ -67,3 +67,17 @@ var myVar = 87;
 // myVar= myVar + 1; original statement;
 
 myVar++;
+
+// Create a variable myDecimal and give it a decimal value with a fractional part (e.g. 5.7).
+
+var myDecimal = 5.7;
+
+// Change the 0.0 so that product will equal 5.0.
+
+// var product = 2.0 * 0.0;
+var product = 2.0 * 2.5;
+
+// reate two new string variables: myFirstName and myLastName and assign them the values of your first and last name, respectively.
+
+var myFirstName = "DeLayne";
+var myLastName = "LaBove";
