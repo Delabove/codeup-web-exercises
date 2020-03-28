@@ -168,6 +168,7 @@ sayThanks();
 // }Now that the function is defined, we can compute the number of monitors needed. Let’s say that the office has 5 rows and 4 columns.
 
     // Declare a variable named numOfMonitors using the const keyword and assign numOfMonitors the value of invoking monitorCount() with the arguments 5 and 4.
+
 // To check that the function worked properly, log numOfMonitors to the console.
 //
 
@@ -211,3 +212,17 @@ const plantNeedsWater = function(day) {
 };
 console.log(plantNeedsWater('Tuesday'));
 
+// declare a const variable, named city set equal to 'New York City'. This variable will exist outside of the block.
+// Below the city variable, write a function named logCitySkyline.
+// Inside of the function body of logCitySkyline(), write another variable using let named skyscraper and set it equal to 'Empire State Building'.
+// Inside the function, include a return statement like this:
+// return 'The stars over the ' + skyscraper + ' in ' + city;
+// Beneath the logCitySkyline() function, use console.log() to log the value of logCitySkyline() to the console.
+
+
+const city = 'New York City';
+function logCitySkyline()  {
+    let skyscraper = 'Empire State Building'
+}
+
+console.log(logCitySkyline());
