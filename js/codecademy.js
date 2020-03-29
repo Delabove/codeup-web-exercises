@@ -334,3 +334,12 @@ function comp(str1, str2) {
 function dividesEvenly(a, b) {
     return a % b === 0;
 }
+
+// Create a function that returns true if a string is empty and false otherwise.
+function isEmpty(s) {
+    return s.length === 0;
+}
+
+// Create a function that takes a name and returns a greeting in the form of a string. Don't use a normal function but use an "arrow function".
+
+const helloName = name => 'Hello ' + name + '!';
