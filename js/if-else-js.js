@@ -40,6 +40,27 @@ var favorite = 'indigo'; // TODO: change this to your favorite color from the li
 
 // (color === favorite) ? console.log("That's my favorite color!") : console.log("That's pretty.")
 
+// Create a function named showMultiplicationTable that accepts a number and console.logs the multiplication table for that number (just multiply by the numbers 1 through 10)
+//
+// For example, showMultiplicationTable(7) should output
+//
+//
+// 7 x 1 = 7
+// 7 x 2 = 14
+// 7 x 3 = 21
+// 7 x 4 = 28
+// 7 x 5 = 35
+// 7 x 6 = 42
+// 7 x 7 = 49
+// 7 x 8 = 56
+// 7 x 9 = 63
+// 7 x 10 = 70
+
+
+
+
+
+
 // WHILE LOOP EXERCISE
 
 
@@ -53,4 +74,34 @@ while(i <= 65536) {
 // do-while loop pt 2
 
 
+//TODO TOGETHER: Create a while loop that counts up to 10 (non-inclusive) by 1
+// (0, 1, 2...9)
 
+var i= 1;
+
+while( i <= 10){
+    console.log("Counting up to 10: " + i);
+    i++;
+}
+
+
+//TODO TOGETHER: Create a while loop that counts down from 20 to 0 (inclusive) by 1
+// (20, 19, 18...0)
+
+i = 20;
+
+while (i >= 0) {
+    console.log("Counting down from 20:" + i);
+    i--;
+}
+
+
+//TODO TOGETHER: Create a while loop that counts up to 20 (inclusive) by 2s (0, 2, 4...)
+// (0, 2, 4...20)
+
+var i = 2;
+
+while(i <= 20) {
+    console.log("Counting up by 2's to 20:" + i);
+    i += 2;
+}
