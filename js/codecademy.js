@@ -247,3 +247,17 @@ function callMyNightSky() {
     return 'Night Sky: ' + satellite + ', ' + stars + ', and ' + galaxy;
 }
 console.log(callMyNightSky());
+
+
+// define a function logVisibleLightWaves().
+// Within the logVisibleLightWaves() function, using const, create a variable lightWaves and set it equal to 'Moonlight'.
+// Within the logVisibleLightWaves() function, beneath the lightWaves variable, add a console.log() statement that will log the value of the lightWaves variable when the function runs.
+// Call the logVisibleLightWaves() function from outside the function.
+// Beneath the function call, log the value of lightWaves to the console from outside the function.
+// You’ll notice that it logs a ReferenceError since the variable is tied to the block scope of the function!
+
+function logVisibleLightWaves() {
+    const lightWaves = 'Moonlight'
+    console.log(lightWaves);
+}
+logVisibleLightWaves();
