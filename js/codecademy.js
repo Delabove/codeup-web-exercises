@@ -289,3 +289,21 @@ function profitableGamble(prob, prize, pay) {
 function frames(minutes, fps) {
     return (minutes * fps) * 60;
 }
+
+// Implement a function that returns true if the parameters are equal, and false if they are different.
+
+function checkEquality(a, b) {
+    return a === b;
+}
+
+// Given two numbers, return true if the sum of both numbers is less than 100. Otherwise return false.
+
+function lessThan100(a, b) {
+    return (a + b) < 100;
+}
+
+// Given two strings, firstName and lastName, return a single string in the format "last, first".
+
+function concatName(firstName, lastName) {
+    return lastName + ", " + firstName;
+}
