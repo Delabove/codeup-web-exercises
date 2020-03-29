@@ -343,3 +343,19 @@ function isEmpty(s) {
 // Create a function that takes a name and returns a greeting in the form of a string. Don't use a normal function but use an "arrow function".
 
 const helloName = name => 'Hello ' + name + '!';
+
+// Create a function that finds the index of a given item.
+
+function search(arr, item) {
+    return arr.indexOf(item);
+}
+
+// Create a function that returns true when num1 is equal to num2; otherwise return false.
+function isSameNum(num1, num2) {
+    return num1 === num2;
+}
+
+// Write a function that takes two integers (hours, minutes) and converts them into seconds.
+function convert(hours, minutes) {
+    return ((hours*60) + minutes) * 60
+}
