@@ -45,3 +45,10 @@ function animals(chickens, cows, pigs) {
 function findPerimeter(height, width) {
     return (height + width) * 2
 }
+
+// Create a function that takes a string and returns true or false, depending on whether the characters are in order or not.
+
+function isInOrder(str) {
+    return str === str.split("").sort().join("")
+}
+
