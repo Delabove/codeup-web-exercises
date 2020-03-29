@@ -273,3 +273,19 @@ function lessThanOrEqualToZero(num) {
 function divisibleByFive(n) {
     return n % 5 === 0;
 }
+
+// Create a function that takes in three arguments (prob, prize, pay) and returns true if prob * prize > pay; otherwise return false.
+
+function profitableGamble(prob, prize, pay) {
+    if (prob * prize > pay) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Create a function that returns the number of frames shown in a given number of minutes for a certain FPS.
+
+function frames(minutes, fps) {
+    return (minutes * fps) * 60;
+}
