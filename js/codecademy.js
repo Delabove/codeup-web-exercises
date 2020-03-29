@@ -307,3 +307,21 @@ function lessThan100(a, b) {
 function concatName(firstName, lastName) {
     return lastName + ", " + firstName;
 }
+
+// Create a function that takes an integer and returns true if it's divisible by 100, otherwise return false.
+
+function divisible(num) {
+    return num % 100 === 0;
+}
+
+// Write a function to reverse an array.
+function reverse(arr) {
+    return arr.reverse();
+}
+
+// Create a function that accepts an array and returns the last item in the array.
+
+function getLastItem(arr) {
+    return arr[arr.length -1];
+}
+
