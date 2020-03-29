@@ -38,4 +38,19 @@ var favorite = 'indigo'; // TODO: change this to your favorite color from the li
 //       says whether the random color matches your favorite color.
 // (condition) ? when true : when false;
 
-(color === favorite) ? console.log("That's my favorite color!") : console.log("That's pretty.")
+// (color === favorite) ? console.log("That's my favorite color!") : console.log("That's pretty.")
+
+// WHILE LOOP EXERCISE
+
+
+var i = 2;
+while(i <= 65536) {
+    console.log(i);
+    i *= 2;
+}
+
+
+// do-while loop pt 2
+
+
+
