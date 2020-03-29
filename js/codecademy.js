@@ -261,3 +261,15 @@ function logVisibleLightWaves() {
     console.log(lightWaves);
 }
 logVisibleLightWaves();
+
+// Create a function that takes a number as its only argument and returns true if it's less than or equal to zero, otherwise return false.
+
+function lessThanOrEqualToZero(num) {
+    return num <= 0;
+}
+
+// Create a function that returns true if an integer is evenly divisible by 5, and false otherwise.
+
+function divisibleByFive(n) {
+    return n % 5 === 0;
+}
