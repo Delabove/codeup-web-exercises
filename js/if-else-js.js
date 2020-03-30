@@ -105,3 +105,11 @@ while(i <= 20) {
     console.log("Counting up by 2's to 20:" + i);
     i += 2;
 }
+
+// /TODO TOGETHER: Create a do-while loop that asks the user to confirm: "Would you like to exit?"
+
+do {
+    var userConfirm = confirm("Would you like to exit?");
+    console.log('userConfirm: ' + userConfirm);
+} while (userConfirm === false);
+
