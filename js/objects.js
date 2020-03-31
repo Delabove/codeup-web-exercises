@@ -29,8 +29,9 @@
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
     person.sayHello = function () {
-     alert("Hello " + person.firstName + " " + person.lastName);
+     return ("Hello " + this.firstName + " " + this.lastName);
     };
+
     console.log(person.sayHello()); // "Hello from Rick Sanchez!"
 
     /** TODO:
@@ -47,29 +48,28 @@
      * and console.log the relevant messages for each person
      */
 
-    // var shoppers = [
-    //     {name: 'Cameron', amount: 180},
-    //     {name: 'Ryan', amount: 250},
-    //     {name: 'George', amount: 320}
-    // ];
-    // var tipTotal = amount * .12;
-    // var billTotal = tipTotal + amount;
+    var shoppers = [
+        {name: 'Cameron', amount: 180},
+        {name: 'Ryan', amount: 250},
+        {name: 'George', amount: 320}
+    ];
 
     function hebDiscount(name, amount){
         var tipTotal = amount * .12;
-        var billTotal = tipTotal + amount;
-        if (bill > 200) {
+        var billTotal =  amount - tipTotal;
 
-        alert("Congratulations! " + name + " Your bill today is "  + billTotal);
+        if (amount > 200) {
+            alert("Hello, " + name + " Your discounted total comes to "  + billTotal);
 
-    } else {
-        alert("Your total today is ")
-    }
+            } else {
+             alert("Hello" + name + " your total today is " + amount);
+             }
 
-    }
-    console.log(hebDiscount( 'Cameron', 180));
-    console.log(hebDiscount( 'Ryan', 250));   //     {name: 'Ryan', amount: 250},
-    console.log(hebDiscount( 'George', 320));  //     {name: 'George', amount: 320}
+         }
+
+    console.log(hebDiscount("Cameron" , 180));
+   console.log(hebDiscount("Ryan" , 250));
+   console.log(hebDiscount("George" , 320));
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
