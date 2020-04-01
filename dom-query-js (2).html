@@ -30,29 +30,27 @@
         "use strict";
         // TODO: Uncomment next line and get the main header element by id
         var mainHeader = document.getElementById("main-header");
-         console.log(mainHeader.innerHTML);
+        console.log(mainHeader.innerHTML);
 
         // TODO: Set inner html of mainHeader to "JavaScript is Cool"
         mainHeader.innerHTML = "JavaScript is Cool";
         console.log(mainHeader.innerHTML);
-
         // TODO: Uncomment the next line and get the sub header element by id
         var subHeader = document.getElementById("sub-header");
         console.log(subHeader.innerHTML);
 
         // TODO: Set the text color of subHeader to blue
-
         subHeader.style.color = "blue";
-
-
         // TODO: Uncomment the next line and get all list items
+        var listItems = document.getElementsByTagName('li');
+
         for(var index = 0; index < listItems.length; index++) {
-            // TODO: Set text color on every other list item to grey
+
+        // TODO: Set text color on every other list item to grey
             if(index % 2 !== 0) {
                 listItems[index].style.color = 'grey';
             }
-
-            // TODO: Set text color of li with dbid = 1 to blue
+        // TODO: Set text color of li with dbid = 1 to blue
             var dbId = listItems[index].getAttribute('data-dbid');
             console.log('dbId: ' + dbId);
             if(dbId === "1") {
@@ -62,10 +60,70 @@
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
         var subParagraphs = document.getElementsByClassName("sub-paragraph");
 
-            console.log(subParagraphs)
+
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
         subParagraphs.innerHTML = "<h1>Mission Accomplished!</h1>";
+
     })();
+
 </script>
+<button id="btn1">Click Me!</button>
+<script>
+    'use strict';
+
+    // create a handler function
+    var listener = function (event) {
+        alert('Javascript is Cool!');
+    }
+
+    // register the listener to handle clicks on btn1
+    document.getElementById('btn1').addEventListener('click', listener);
+
+</script>
+
+<button id="btn2">Click Me!</button>
+<script>
+    'use strict';
+
+    // create a handler function
+    var listener = function (event) {
+        alert('Only 14.5 weeks lef of school!');
+    }
+
+    // register the listener to handle clicks on btn1
+    document.getElementById('btn2').addEventListener('click', listener);
+
+</script>
+
+
+<button id="btn3">Click Me!</button>
+<script>
+    'use strict';
+
+    // create a handler function
+    var listener = function (event) {
+        alert('You clicked the button!');
+    }
+
+    // register the listener to handle clicks on btn1
+    document.getElementById('btn3').addEventListener('click', listener);
+
+</script>
+
+
+<button id="btn4">Click Me!</button>
+<script>
+    'use strict';
+
+    // create a handler function
+    var listener = function (event) {
+        alert('You clicked the button AGAIN!');
+    }
+
+    // register the listener to handle clicks on btn1
+    document.getElementById('btn4').addEventListener('click', listener);
+
+</script>
+
 </body>
 </html>
