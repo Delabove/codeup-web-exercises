@@ -16,8 +16,18 @@ console.log("token: " + mapBoxToken);
 //TODO TOGETHER: Set map to Dallas area using the coordinates [-96.8057, 32.7787]
 
 
+mapboxgl.accessToken = mapBoxToken;
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [-96.8057, 32.7787],
+    zoom: 15,
+    // style: 'mapbox: //styles/mapbox/outdoors-v11'
+
+});
 
 
+// @@ -34,6 +42,15 @@ console.log('token: ' + mapboxToken);
 
 
 //TODO: Experiment with different map styles, zoom levels, and centers. You will need to reference the mapbox docs. (~15 minutes)
@@ -33,10 +43,17 @@ console.log("token: " + mapBoxToken);
 
 // TODO TOGETHER: Add a marker to the map using the following coordinates [-96.8084, 32.7799]. This marker will mark the Sixth Floor Muesume on our map.
 // TODO TOGETHER: Change the color of the marker
+var markerOptions = {
+    color: "red",
+    draggable: true
+};
+var marker = new mapboxgl.Marker(markerOptions)
+    .setLngLat([-96.8057, 32.7787])
+    .addTo(map);
 
-
-
-
+var markerMuseum = new mapboxgl.Marker(markerOptions)
+    .setLngLat([-96.8084, 32.7799])
+    .addTo(map);
 
 
 // TODO: Experiment with the color, and setting the LngLat
@@ -51,9 +68,17 @@ console.log("token: " + mapBoxToken);
 
 
 // TODO TOGETHER: Add a popup to the map over codeup. Set the html as a paragraph that says "Codeup Rocks!"
+var popup = new mapboxgl.Popup()
+    .setHTML ("<h1>Codeup Rocks!</h1>")
+    .addTo(map);
+
+    marker.setPopup(popup);
+    var popupMuseum = new mapboxgl.Popup()
+    .setHTML ("<h1>Sith Floor Museum!</h1>")
+    .addTo(map);
 
 
-
+    markerMuseum.setPopup(popupMuseum);
 
 // TODO TOGETHER: Comment out the popup we just added. Add a popup to the Sixth Floor Musume marker.
 
@@ -70,7 +95,10 @@ console.log("token: " + mapBoxToken);
 
 
 // TODO TOGETHER: Using the Geocoder helper function, log the coordinates of Codeup and recenter the map to focus on Codeup. Comment out previous map code.
+geocode("701 Commerce St Dallas, TX 75202", mapBoxToken).then(function (result) {
+    console.log(result);
 
+});
 
 
 
