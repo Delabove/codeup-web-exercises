@@ -48,5 +48,3 @@ var restaurantArray = [
     marker.setPopup(popup)
 });
 });
-
-
