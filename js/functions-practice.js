@@ -159,9 +159,15 @@
 
 
 // 101 JAVASCRIPT QUESTIONS
-
-function last(input){
-    if(input === typeof('string') ) {
-        return input.length - 1
-    }
+function hasEvens(numSeq) {
+        if(!isNaN(numSeq)) {
+        return true;
+        } else if(numSeq % 2 === 0) {
+                return false;
+        } else {
+        return false;
 }
+}
+
+console.log(hasEvens([1, 2, 3]));
+console.log(hasEvens([3, 3, 3]));
