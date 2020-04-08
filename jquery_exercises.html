@@ -2,22 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+
+    <title>JQuery Selectors</title>
+
 </head>
 <body>
 
+<h1 class="codeup" id="header"> Learning How To Code </h1>
+ <p> Coding can be fun. However, if you aren't prepared to put the work and time in, it will be a stressful battle.
+ To prepare accurately be sure to follow the list below!</p>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam animi architecto atque eaque enim excepturi expedita facere fuga, nam nostrum officiis quae quos repellat rerum sapiente veniam voluptas, voluptates.
+<ul class="" id="unordered-list">
+    <li id="list-item1">Read over the next days material every night.</li>
+    <li id="list-item2">Read over the previous days material.</li>
+    <li id="list-item3">Practice every day!</li>
+</ul>
 
+<div class="codeup" id="goodLuck-header"> GOOD LUCK ON YOUR JOURNEY TO CODE!</div>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
 <script>
-    "use strict";
+
+$( "li" ).css( "font-size", "20px");
+$("h1, p, li").css('background-color', 'yellow');
+
+var contents = $("h1").html;
+alert(contents);
 
 
-    $(document).ready(function(){
-        console.log("the page is ready");
-    });
 </script>
+
 </body>
 </html>
