@@ -159,15 +159,31 @@
 
 
 // 101 JAVASCRIPT QUESTIONS
-function hasEvens(numSeq) {
-        if(!isNaN(numSeq)) {
-        return true;
-        } else if(numSeq % 2 === 0) {
-                return false;
-        } else {
-        return false;
-}
+
+// function isOdd(number) {
+//         var oddNumber;
+//         if (number % 2) {
+//                 oddNumber = true;
+//         } else {
+//                 oddNumber = false;
+//         }
+//
+//         return oddNumber;
+
+// function shortestString(stringArray) {
+//         var min = Math.min.apply(Math, stringArray.map(function(str) { return str.length; }));
+//
+// }
+// var my_arry = ["hello", "muchasgracias", "hi", "elephant"];
+const book = {
+        "title": "Genetic Algorithms and Machine Learning for Programmers",
+        "price": 36.99,
+        "author": "Frances Buontempo"
 }
 
-console.log(hasEvens([1, 2, 3]));
-console.log(hasEvens([3, 3, 3]));
+book.getBookAuthor= function () {
+        return book.author;
+}
+
+
+console.log(book.getBookAuthor());
