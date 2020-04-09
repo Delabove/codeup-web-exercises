@@ -39,6 +39,15 @@ $("p").dblclick(function () {
 });
 
 
+var inParagraphHandler = function () {
+    $('li').css('color', 'red');
+};
+
+var outParagraphHandler = function () {
+    $('li').css('color', 'black');
+};
+
+$('li').hover(inParagraphHandler, outParagraphHandler);
 </script>
 
 </body>
