@@ -33,11 +33,14 @@ $(document).ready(function () {
     })
 });
 
+
+
 $("p").dblclick(function () {
     $(this).css("font-size", "18px")
     console.log("Paragraph was clicked.")
 });
 
+// DEFINED BEFORE
 
 var inParagraphHandler = function () {
     $('li').css('color', 'red');
@@ -47,7 +50,18 @@ var outParagraphHandler = function () {
     $('li').css('color', 'black');
 };
 
+
+// INLINE ANONYMOUS FUNCTION BUT SAME AS ABOVE
+
 $('li').hover(inParagraphHandler, outParagraphHandler);
+
+$('li').hover(function () {
+    $('li').css('color', 'red');
+}, function () {
+    $('li').css('color', 'black');
+});
+
+
 </script>
 
 </body>
