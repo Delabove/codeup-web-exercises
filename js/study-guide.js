@@ -54,3 +54,9 @@ let arr = [1, 2, 3, 4, 5, 6];
     });
 
 console.log(even);
+
+const getPassingGrades = grades => {
+    return grades.filter(grade => grade > 10);
+}
+
+console.log(getPassingGrades([15, 8, 13]));
