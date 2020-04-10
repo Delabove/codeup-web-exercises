@@ -9,7 +9,14 @@ console.log(joinArray(["DeLayne", "Jacques", "Grayson"]));
 
 
 function splitArray(arr) {
-    return arr.split("", 6);
+    return arr.split(",");
 }
 
-console.log(splitArray("How are you doing today?"))
+console.log(splitArray("Eat,Sleep,Code,Repeat"));
+
+function mapArray(age) {
+    const ages = [18, 20, 21, 30];
+    return ages.map(age => age * 2);
+}
+
+console.log(mapArray());
