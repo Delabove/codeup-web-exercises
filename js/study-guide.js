@@ -60,3 +60,28 @@ const getPassingGrades = grades => {
 }
 
 console.log(getPassingGrades([15, 8, 13]));
+
+const getFreezingTemperatures = temperatures => {
+    return temperatures.filter(temperature => temperature < 0);
+}
+
+console.log(getFreezingTemperatures([5, -20, 37]));
+
+const containsAmsterdam = cities => {
+    return cities.includes("Amsterdam");
+}
+
+console.log(containsAmsterdam(["Brussels", "Amsterdam", "Oslo"]));
+
+const getNamesString = people => {
+    return people.join(", ");
+}
+
+
+console.log(getNamesString(["John", "Jennifer", "Liham"]));
+
+const doubleGrades = grades => {
+    return grades.map(grade => grade * 2);
+}
+
+console.log(doubleGrades([4, 7, 10, 3]));
