@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+</head>
+<body>
+<h1>Konami Code</h1>
+
+
+<audio id="keySound">
+    <source src="media/UI_Quirky11.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+
+<script>
+    "use strict";
+
+    // $(document).keyup(function(event){
+    //     console.log(event.keyCode);
+    // });
+
+    var konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65], n = 0;
+    var konamiExecuted = false;
+
+    $(document).keydown(function (e) {
+        if (e.keyCode === konamiCode[n++]) {
+            if (n === konamiCode.length) {
+                alert("You have added 30 lives!!!");
+                konamiExecuted = true;
+                n = 0;
+                return false;
+            }
+        } else {
+            n = 0;
+        }
+    });
+
+    $(document).keydown(function (e) {
+    $('body').on("keydown", function(e){
+        var keycode = e.keyCode;
+
+        switch(keycode) {
+            case 38:
+                $(this).css({'background':'orange'});
+                $("#keySound")[0].play();
+                break;
+
+            case 40:
+                $(this).css({'background':'yellow'});
+                break;
+
+            case 37:
+                $(this).css({'background':'indigo'});
+
+                break;
+
+            case 39:
+                $(this).css({'background':'blue'});
+                break;
+
+            case 66:
+                $(this).css({'background':'green'});
+                break;
+
+            case 65:
+                $(this).css({'background':'purple'});
+                break;
+        }
+
+    });
+
+    });
+
+</script>
+</body>
+</html>
