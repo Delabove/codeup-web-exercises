@@ -53,11 +53,46 @@
     <dd class="invisible">Yogi lives there.</dd>
 </dl>
 
+<!--Under the FAQ, add 3 unordered lists like above. Each list should contain a national park name in an h3 element, and a ul of 4 facts about the park.-->
+
+<h3 class="bold-list">Hot Springs National Park</h3>
+<ul id="hot">
+
+    <li class="hotSprings"   id="hot-1" >Features early 20th century bathouses.</li>
+    <li class="hotSprings"  id="hot-2" >Bathouses are built on top of a natural hot springs.</li>
+    <li class="hotSprings"  id="hot-3" >Located in Garland County, Arkansas.</li>
+    <li class="hotSprings"  id="hot-4">Established in 1832.</li>
+</ul>
+
+<!--UNORDERED LIST FROM TRAVERSING EXERCISE-->
+
+<h3 class="bold-list">Golden Gate Highlands National Park</h3>
+<ul id="golden">
+
+    <li class="goldenGate"  id="golden-1">Features early 20th century bathouses.</li>
+    <li class="goldenGate" id="golden-2">Bathouses are built on top of a natural hot springs.</li>
+    <li class="goldenGate" id="golden-3">Located in Garland County, Arkansas.</li>
+    <li class="goldenGate" id="golden-4">Established in 1832.</li>
+
+</ul>
+
+<h3 class="bold-list">Yellowstone National Park</h3>
+<ul id="yellow">
+
+    <li class="yellowstone"  id="yellow-1">Features early 20th century bathouses.</li>
+    <li class="yellowstone" id="yellow-2">Bathouses are built on top of a natural hot springs.</li>
+    <li class="yellowstone" id="yellow-3">Located in Garland County, Arkansas.</li>
+    <li class="yellowstone" id="yellow-4">Established in 1832.</li>
+
+</ul>
+<button type="submit">Highlight last list item</button>
+
 <script
         src="https://code.jquery.com/jquery-3.4.1.slim.js"
         integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
         crossorigin="anonymous">
 </script>
+
 <script>
     $(document).ready(function(){
 
@@ -77,6 +112,31 @@
         });
 
     });
+
+    // TRAVERSING EXERCISE
+$('button').click(function (event) {
+    event.preventDefault();
+
+    $('.hotSprings').last().css('background-color', '#FF0');
+    $('.yellowstone').last().css('background-color', '#FF0');
+    $('.goldenGate').last().css('background-color', '#FF0');
+
+
+    });
+
+
+
+$('.bold-list').click(function (event) {
+    event.preventDefault();
+
+    $('li').each(function (element) {
+
+            $(this).css('font-weight', "bold");
+
+    });
+});
+
+
 </script>
 </body>
 </html>
