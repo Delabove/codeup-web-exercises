@@ -126,7 +126,7 @@ $('button').click(function (event) {
 
 
 
-$('.bold-list').click(function (event) {
+$('h3').click(function (event) {
     event.preventDefault();
 
     $('li').each(function (element) {
@@ -134,6 +134,17 @@ $('.bold-list').click(function (event) {
             $(this).css('font-weight', "bold");
 
     });
+
+
+    $('ul').click(function (event) {
+        event.preventDefault();
+        $('.hotSprings').first().css('color', 'blue');
+        $('.yellowstone').first().css('color', 'blue');
+        $('.goldenGate').first().css('color', 'blue');
+        });
+
+
+
 });
 
 
