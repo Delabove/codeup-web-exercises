@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Jquery Attributes and CSS</title>
+    <style>
+        .invisible {
+            visibility: hidden;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -10,6 +16,9 @@
 <h1 id="parkFaq-header">10 NATIONAL PARK FAQS</h1>
 <p id="parkFaq">The National Park Service is a bureau of the Department of the Interior. Directly overseeing its operation is the department's Assistant Secretary for Fish, Wildlife and Parks. The National Park Service administers more than 400 national parks across the country of different shapes, sizes, and purpose.</p>
 <dl id="parkFaqList">
+
+    <dt><link rel="stylesheet" href="">Click here to view list.</dt>
+
     <dd id="parkFaq1">Some national parks welcome pets—in developed areas, on many trails and campgrounds, and in some lodging facilities.</dd>
     <dd id="parkFaq2">More than 20,000 permanent, temporary, and seasonal employees. </dd>
     <dd id="parkFaq3">The National Park System includes 419 areas covering more than 85 million acres in every state, the District of Columbia, American Samoa, Guam, Puerto Rico, and the Virgin Islands. </dd>
@@ -30,10 +39,10 @@
 
 <script>
 
-//$(document).ready(function() {
-//    alert('Good Morning!');
-//
-//})
+$(document).ready(function() {
+   alert('Good Morning!');
+
+
 
     // H1 ELEMENT
 
@@ -43,9 +52,10 @@
     alert(h1Contents);
 
 });
+$('dd').addClass('invisible');
 
- $
-
+$('.invisible').toggleAttribute('visible')
+})
 </script>
 
 </body>
