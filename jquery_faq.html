@@ -54,7 +54,10 @@ $(document).ready(function() {
 });
 $('dd').addClass('invisible');
 
-$('.invisible').toggleAttribute('visible')
+$('dt').click(function () {
+    $('.toggleLink').toggleClass('visible')
+});
+
 })
 </script>
 
