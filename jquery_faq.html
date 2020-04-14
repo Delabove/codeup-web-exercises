@@ -18,9 +18,13 @@
     </style>
 </head>
 <body>
+
+<!--EFFECTS EXERCISE-->
+<h2 id="registration-reminder">Please register to use the site.</h2>
+
 <div id="signUps">
     <h1 class="signUp">"Would you like to sign up for our newsletter?</h1>
-    <span id="hideSignUp">X</span>
+    <span id="toggleSignUp">X</span>
 </div>
 
 
@@ -60,8 +64,8 @@
 
 <!--Under the FAQ, add 3 unordered lists like above. Each list should contain a national park name in an h3 element, and a ul of 4 facts about the park.-->
 
-<h3 class="bold-list">Hot Springs National Park</h3>
-<ul id="hot">
+<a href="" class="slideList"><h3 class="bold-list">Hot Springs National Park</h3></a>
+<ul class="invisible"  id="hot">
 
     <li class="hotSprings"   id="hot-1" >Features early 20th century bathouses.</li>
     <li class="hotSprings"  id="hot-2" >Bathouses are built on top of a natural hot springs.</li>
@@ -71,8 +75,8 @@
 
 <!--UNORDERED LIST FROM TRAVERSING EXERCISE-->
 
-<h3 class="bold-list">Golden Gate Highlands National Park</h3>
-<ul id="golden">
+<a href="" class="slideList"><h3 class="bold-list">Golden Gate Highlands National Park</h3></a>
+<ul class="invisible" id="golden">
 
     <li class="goldenGate"  id="golden-1">Features early 20th century bathouses.</li>
     <li class="goldenGate" id="golden-2">Bathouses are built on top of a natural hot springs.</li>
@@ -81,8 +85,8 @@
 
 </ul>
 
-<h3 class="bold-list">Yellowstone National Park</h3>
-<ul id="yellow">
+<a href="" class="slideList"><h3 class="bold-list">Yellowstone National Park</h3></a>
+<ul class="invisible" id="yellow">
 
     <li class="yellowstone"  id="yellow-1">Features early 20th century bathouses.</li>
     <li class="yellowstone" id="yellow-2">Bathouses are built on top of a natural hot springs.</li>
@@ -93,12 +97,10 @@
 <span><button type="submit">Highlight last list item</button></span>
 
 
-
 <script
-        src="https://code.jquery.com/jquery-3.4.1.slim.js"
-        integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
-        crossorigin="anonymous">
-</script>
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
 
 <script>
     $(document).ready(function(){
@@ -152,7 +154,6 @@ $('h3').click(function (event) {
 
 
 
-
 });
 
 // EFFECTS EXERCISE
@@ -160,15 +161,44 @@ $('h3').click(function (event) {
     $(document).ready(function () {
 
 
-        $('#hideSignUp').click(function () {
+        $('#toggleSignUp').click(function () {
             var signUpToggle = $('.signUp');
                 signUpToggle.toggle();
 
         });
+        $('#offer-close-button').click(function(){
+            $(this).parent().hide();
+        });
+
+        // setTimeout(function(){
+        //     $('#registration-reminder').fadeIn(3000);
+        // }, 8000);
+
+        $('#registration-reminder').delay(8000).fadeIn(3000);
     });
+    //
+    // });
+
+    // $('#show-circles').click(function(){
+    //     ulElements.show();
+    // });
+    //
+    // $('#hide-circles').click(function(){
+    //     ulElements.hide();
+    // });
+    //
+    // $('#toggle-circles').click(function(){
+    //     ulElements.toggle();
+    // });
+    //
+    // $('#toggle-circles-fade').click(function(){
+    //     ulElements.fadeToggle(3000);
+    // });
 
 
 
 </script>
 </body>
 </html>
+
+
