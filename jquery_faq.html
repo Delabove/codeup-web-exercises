@@ -18,6 +18,11 @@
     </style>
 </head>
 <body>
+<div id="signUps">
+    <h1 class="signUp">"Would you like to sign up for our newsletter?</h1>
+    <span id="hideSignUp">X</span>
+</div>
+
 
 <a href="/" id="display-dd">Show definitions</a>
 
@@ -87,10 +92,6 @@
 </ul>
 <span><button type="submit">Highlight last list item</button></span>
 
-<div class="frame dog"></div>
-<div class="frame code"></div>
-<div class="frame travel"></div>
-
 
 
 <script
@@ -150,16 +151,21 @@ $('h3').click(function (event) {
         });
 
 
-$('.dog').click(function (event) {
-
-    $(this).css('border', 'solid 12px brown');
-    $(this).css('background-image', )
-
 
 
 });
-});
 
+// EFFECTS EXERCISE
+
+    $(document).ready(function () {
+
+
+        $('#hideSignUp').click(function () {
+            var signUpToggle = $('.signUp');
+                signUpToggle.toggle();
+
+        });
+    });
 
 
 
