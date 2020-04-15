@@ -25,10 +25,8 @@
 (function() {
     "use strict";
     // TODO: Create an ajax GET request for /data/inventory.json
-    var url = 'https://ajax.googleapis.com/ajax/libs'
-    $.ajax(url{
-        type: "GET"
-    }).done(function(data, status, jqXhr) {
+    var url = 'data/inventory.json';
+    $.ajax(url).done(function(data, status, jqXhr) {
         alert("AJAX call completed successfully!");
         console.log("Request status: " + status);
         console.log("Data returned from server:");
@@ -38,13 +36,13 @@
     //       HINT: Your data should come back as a JSON object; use console.log() to inspect
     //             its contents and fields
     //       HINT: You will want to target #insertProducts for your new HTML elements
-    $('#insertProducts').click(function () {
-        $.getJSON('/data/inventory.json', function (data) {
-            console.log(data);
-        })
-
-    })
-
+    // $('#insertProducts').click(function () {
+    //     $.getJSON('/data/inventory.json', function (data) {
+    //         console.log(data);
+    //     })
+    //
+    // })
+    //
 
 
 })();
