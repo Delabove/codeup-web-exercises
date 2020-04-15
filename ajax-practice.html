@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+</head>
+<body>
+
+<h1>My Favorite Quotes</h1>
+
+<table id="products" border="1">
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Quote</th>
+        </tr>
+    </thead>
+    <tbody id="insertProducts">
+    <tr>
+<!--        <td id="author"></td>-->
+        <td><img id="quote" src="https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand" alt="">
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+<form>
+    <button type="reset" id="do-search">Search</button>
+</form>
+
+
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<script src='https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand'></script>
+
+<script>
+    "use strict";
+    $(document).ready(function() {
+    // var $authorCol = $("#author");
+    var $quoteCol = $("#quote");
+    //
+    $("#do-search").click(function(event) {
+    //     // stop the button from submitting the form by default
+        event.preventDefault();
+
+        var url = 'https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand';
+        $.ajax(url,).done(function (data, status) {
+            alert("AJAX call completed successfully!");
+            console.log("Request status: " + status);
+            console.log("Data returned from server:");
+            console.log(data);
+            // $authorCol.text(data.quoteAuthor);
+            $quoteCol.text( data.content);
+        }).fail(function(error){
+            console.error(error);
+        }).always(function(){
+            console.log('always runs once you get a response');
+        //
+        });
+
+    })
+    });
+</script>
+
+</body>
+</html>
