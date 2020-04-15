@@ -36,13 +36,15 @@
     //       HINT: Your data should come back as a JSON object; use console.log() to inspect
     //             its contents and fields
     //       HINT: You will want to target #insertProducts for your new HTML elements
-    // $('#insertProducts').click(function () {
-    //     $.getJSON('/data/inventory.json', function (data) {
-    //         console.log(data);
-    //     })
-    //
-    // })
-    //
+
+       var generatedHTML = "<td>"+url.title+"</td>" +
+            "            <td>"+url.quantity+"</td>" +
+            "            <td>"+url.price+"</td>" +
+            "            <td>"+url.categories+"</td>"
+
+        $("#insertProducts").append(generatedHTML);
+
+
 
 
 })();
