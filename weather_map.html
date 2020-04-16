@@ -33,9 +33,11 @@
     <input type="text" class="m-3"  placeholder="Search City" >
     <button type="button" class="btn btn-s btn-primary btn-sm">Find</button>
 </div>
-
-    <div id="dayForecast"></div>
-
+    <div class="row">
+        <div class="col-sm-6">
+    <div class="card" id="dayForecast" style="width: 18rem;"></div>
+    </div>
+    </div>
 </main>
 
 
@@ -111,11 +113,12 @@ var getForecast = "";
 
 for(var x = 0; x < 5; x++) {
     getForecast =
-        "<table >" +
+        "<table class='table' >" +
                " <tbody>"+
                   "  <tr>" +
                     "<td>"+data.list[x]["dt_txt"]+"</td>"+
                   "  </tr>" +
+
                    " <tr>" +
                    " <td>"+data.list[x].main.temp+"</td>" +
                    " </tr>" +
@@ -134,9 +137,7 @@ for(var x = 0; x < 5; x++) {
                " </tbody> " +
    " </table>";
 
-    if(x <= 5){
-        x + 8;
-    }
+
 
     $("#dayForecast").append(getForecast);
 
