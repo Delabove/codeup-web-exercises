@@ -114,12 +114,12 @@
         }).done(function (data) {
             console.log(data);
 
-            $dateTD.text(data.list[10]);
-            $tempTD.text(data.list[10].clouds.all)
-            $descTD.text(data.)
-            $humTD.text(data.)
-            $windTD.text(data.)
-            $pressTD.text(data.)
+            $dateTD.text(data.list[10]["dt_txt"]);
+            $tempTD.text(data.list[10].main.temp);
+            $descTD.text(data.list[10].clouds.all);
+            $humTD.text(data.list[10].humidity);
+            $windTD.text(data.list[10].wind.speed);
+            $pressTD.text(data.list[10].main.pressure);
 
 
         }).fail(function (errors) {
