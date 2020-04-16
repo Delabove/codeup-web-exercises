@@ -10,7 +10,7 @@
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css' rel='stylesheet' />
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <style>
         body {
            margin: 0;
@@ -24,15 +24,42 @@
             padding: .5em;
         }
         .card {
-        /*    margin-left: 1.7em;*/
-            width: 17rem;
+            margin-left: 1.7em;
+            width: 15rem;
         }
+
+        .fas {
+            color: deeppink;
+            font-size: 24px;
+        }
+        .far {
+            color: royalblue;
+            padding: 30px;
+            font-weight: bolder;
+            font-size: 24px;
+        }
+
+        td  {
+            font-weight: bolder;
+            font-size: 20px;
+            color: gray;
+            margin-right: 3em;
+
+
+        }
+
+        #date {
+            margin-left: 3em;
+        }
+
         #map {
             position: relative;
             top: 3em;
             bottom: 0;
             width: 100%;
         }
+
+
     </style>
 
 
@@ -109,26 +136,27 @@
 
             var getForecast = "";
 
-            for (var x = 0; x < 5; x++) {
+
+            for (var x = 0; x < 40; x += 8) {
                 getForecast =
                     "<div class='card mr-1'>" +
                     "<table class='table' >" +
                     " <tbody>" +
                     "  <tr>" +
-                    "<td style='background-color: #f5f5f5'>" + data.list[x]["dt_txt"].substring(0, 11) + "</td>" +
+                    "<th class=' far fa-calendar-check ml-5' id='date'>"+data.list[x]["dt_txt"].substring(0, 11)+ "</th>" +
                     "  </tr>" +
 
                     " <tr>" +
-                    " <td id='temp'>" + data.list[x].main.temp + "</td>" +
+                    " <td id='temp'><span class='fas fa-cloud-sun ml-5'>"+data.list[x].main.temp+"</span></td>" +
                     " </tr>" +
                     "   <tr>" +
-                    " <td id='clouds'>" + data.list[x].clouds.all + "</td>" +
+                    " <td id='clouds'>"+data.list[x].clouds.all+"</td>" +
                     " </tr>" +
                     " <tr>" +
                     " <td id='humid'>" + data.list[x].main.humidity + "</td>" +
                     "   </tr>" +
                     "   <tr>" +
-                    "<td id='wind'>" + data.list[x].wind.speed + "</td>" +
+                    "<td class='fas fa-wind ml-2 mr-1' id='wind'>" + data.list[x].wind.speed+ "</td>" +
                     " </tr>" +
                     " <tr>" +
                     "<td id='pressure'>" + data.list[x].main.pressure + "</td>" +
@@ -137,76 +165,107 @@
                     " </table>" +
                     "</div>";
 
-                $("#dayForecast").append(getForecast);
-                // console.log(getForecast);
+
+                $('#dayForecast').append(getForecast);
             }
+
+            // console.log(getForecast);
+            // }
+
 // CLOUD ICONS
-            var getClouds = function(clouds) {
-                if ( 100 < clouds && clouds < 90 ) {
-                    var condition = {
+            var getClouds = function(cloud) {
+                if ( 100 < cloud && cloud < 90 ) {
+                    var cloudy = {
                         cloudNumber: 6,
                         cloudText: 'Cloudy',
                         cloudyImage: "http://openweathermap.org/img/wn/02n@2x.png"
                     };
-                    return condition;
-                } else if ( 89 < clouds && clouds < 60 ) {
-                    var condition = {
+                    return cloudy;
+                } else if ( 89 < cloud && cloud < 60 ) {
+                    var mostCloudy = {
                         cloudNumber: 5,
                         cloudText: 'Mostly Cloudy',
                         cloudyImage: "http://openweathermap.org/img/wn/02n@2x.png",
                     };
-                    return condition;
-                } else if ( 59 < clouds && clouds < 30 ) {
-                    var condition = {
+                    return mostCloudy;
+                } else if ( 59 < cloud && cloud < 30 ) {
+                    var partCloudy = {
                         cloudNumber: 4,
                         cloudText:'Partly Cloudy',
                         cloudyImage: "http://openweathermap.org/img/wn/03n@2x.png"
-                    };
-                } else if (29 < clouds && clouds > 20) {
-                    var condition =  {
+                    }; return partCloudy;
+                } else if (29 < cloud && cloud > 20) {
+                    var mostlySun =  {
                         cloudNumber: 3,
                         cloudText: 'Mostly Sunny'
                     };
-                    return condition;
-                } else if ( 19 > clouds && clouds > 10 ) {
-                    var condition = {
+                    return mostlySun;
+                } else if ( 19 > cloud && cloud > 10 ) {
+                    var sunMostSun = {
                         cloudNumber: 2,
                         cloudText: 'Sunny to Mostly Sunny'
                     };
-                    return condition;
+                    return sunMostSun;
                 } else {
-                    var condition = {
+                    var sunny = {
                         cloudNumber: 1,
                         cloudText: 'Sunny'
-                    };
-                    $("#clouds").append(getClouds());
-                    return condition;
-
+                    }; return sunny
+                    // $('#dayForecast').append(getForecast);
                 }
             }
 
-
-
-
-
-
+            console.log(getClouds);
 
 
 // SEARCH CITY FORECAST BUTTON
-            $("#getWeather").click(function() {
+            $("#getWeather").click(function () {
 
                 var findCity = $("#citySearch").val();
                 // console.log("You typed " + findCity);
 
 
-                if(findCity != "") {
-                    $.get('http://api.openweathermap.org/data/2.5/forecast?q='+ findCity + "&units=imperial&appid=" + OWM_KEY , {
-
-                    }).done(function (data) {
+                if (findCity != "") {
+                    $.get('http://api.openweathermap.org/data/2.5/forecast?q=' + findCity + "&units=imperial&appid=" + OWM_KEY, {}).done(function (data) {
                         //
+
+
+                        var getForecast = "";
+
+                        $('#dayForecast').empty();
+
+                        for (var x = 0; x < 40; x += 8) {
+                            getForecast =
+                                "<div class='card mr-1'>" +
+                                "<table class='table' >" +
+                                " <tbody>" +
+                                "  <tr>" +
+                                "<th id='date'>" + data.list[x]["dt_txt"].substring(0, 11) + "</th>" +
+                                "  </tr>" +
+
+                                " <tr>" +
+                                " <td class='ml-1' id='temp'> "+data.list[x].main.temp+"</td>" +
+                                " </tr>" +
+                                "   <tr>" +
+                                " <td class='ml-1' id='clouds'>" + data.list[x].clouds.all + "</td>" +
+                                " </tr>" +
+                                " <tr>" +
+                                " <td class='ml-1' id='humid'>" + data.list[x].main.humidity + "</td>" +
+                                "   </tr>" +
+                                "   <tr>" +
+                                "<td class='ml-1' id='wind'>" + data.list[x].wind.spee + "</td>" +
+                                " </tr>" +
+                                " <tr>" +
+                                "<td class='ml-1' id='pressure'>" + data.list[x].main.pressure + "</td>" +
+                                "  </tr>" +
+                                " </tbody> " +
+                                " </table>" +
+                                "</div>";
+
+
                         $("#dayForecast").append(getForecast);
                         console.log(data);
-
+                        }
 
                     });
 
@@ -215,12 +274,10 @@
                 }
 
 
+            })
 
-
-            });
-        })
-
-    });
+        });
+    })
 
 
 
@@ -238,6 +295,31 @@
         center: [-96.796989, 32.776665],
 
     });
+
+    self.map.on("click", function(e){
+        console.log("background click", e.lngLat);
+        var geojson = {
+            type: "FeatureCollection",
+            features: [{
+                type:"Feature",
+                geometry: { type: "Point", coordinates: [ e.lngLat.lng, e.lngLat.lat ]}
+            }]
+        };
+        self.map.addSource("pins", {
+            "type": "geojson",
+            "data": geojson
+        });
+        self.map.addLayer({
+            id: "pinsLayer",
+            type: "circle",
+            source: "pins",
+            paint: {
+                "circle-color": "red",
+                "circle-radius": 5
+            }
+        });
+    });
+
 </script>
 
 
