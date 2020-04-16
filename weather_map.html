@@ -6,7 +6,27 @@
 </head>
 <body>
 
+<main class="container">
 
+    <input type="text" placeholder="Search City">
+    <button type="submit" style="background-color: blue; color: white">Find</button>
+
+
+   <table>
+       <th>date</th>
+       <th>temp</th>
+       <tr>description</tr>
+       <tr>humidity</tr>
+       <tr>wind</tr>
+       <tr>pressure</tr>
+   </table>
+
+
+
+
+
+
+</main>
 
 
 
@@ -21,9 +41,12 @@
 
     $.get("http://api.openweathermap.org/data/2.5/weather", {
         "APPID": OWM_KEY,
-        "q":     "San Antonio, US"
+        "q":     "Dallas, US",
+        "units": "imperial"
     }).done(function (data) {
         console.log(data);
+    }).fail(function (errors) {
+        console.error(errors);
     });
 
 
