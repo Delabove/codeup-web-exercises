@@ -34,32 +34,35 @@
     <button type="button" class="btn btn-s btn-primary btn-sm">Find</button>
 </div>
 
+<!--    <div id="forecast" class="card-deck"></div>-->
 
     <div class="card" style="width: 18rem;">
+
+
         <div class="card-body">
    <table class="table" id="weatherTable">
 
        <tbody>
            <tr >
-              <td id="header">Date</td>
+              <td id="date-header"></td>
            </tr>
 
            <tr>
-               <td>temperature</td>
+               <td id="temp"></td>
            </tr>
 
 
            <tr>
-               <td>description</td>
+               <td id="description">description</td>
            </tr>
            <tr>
-               <td>humidity</td>
+               <td id="humidity">humidity</td>
            </tr>
            <tr>
-               <td>wind</td>
+               <td id="wind">wind</td>
            </tr>
            <tr>
-               <td>pressure</td>
+               <td id="pressure">pressure</td>
            </tr>
        </tbody>
 
@@ -80,7 +83,7 @@
 
 
 <!--JQUERY-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
 
 <!--KEYS-->
 <script src="js/keys.js"></script>
@@ -91,19 +94,40 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
 <script>
- $(document).ready(function () {
+    "use strict";
+    $(document).ready(function() {
+        //
+        var $dateTD = $("#date-header");
+        var $tempTD = $("#temp");
+        var $descTD = $("#description");
+        var $humTD = $("#humidity");
+        var $windTD = $("#wind");
+        var $pressTD = $("#pressure");
 
-    $.get('http://api.openweathermap.org/data/2.5/forecast', {
-        "APPID": OWM_KEY,
-        "q":     "Dallas, US",
-        "units": "imperial"
-    }).done(function (data) {
-        for
-    }).fail(function (errors) {
-        console.error(errors);
+
+
+
+        $.get('http://api.openweathermap.org/data/2.5/forecast', {
+            "APPID": OWM_KEY,
+            "q": "Dallas, US",
+            "units": "imperial"
+        }).done(function (data) {
+            console.log(data);
+
+            $dateTD.text(data.list[10]);
+            $tempTD.text(data.list[10].clouds.all)
+            $descTD.text(data.)
+            $humTD.text(data.)
+            $windTD.text(data.)
+            $pressTD.text(data.)
+
+
+        }).fail(function (errors) {
+            console.error(errors);
+
+
+        });
     });
-
- });
 
 
 </script>
