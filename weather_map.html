@@ -69,25 +69,6 @@
         </div>
     </div>
 
-<!--    <div class="card" style="width: 18rem;">-->
-<!--        <div class="card-body">-->
-<!--    <ul>-->
-<!--           <li class="card-header">Date</li>-->
-<!--           <li>Temperature</li>-->
-<!--           <hr>-->
-<!--           <li>Description</li>-->
-<!--           <hr>-->
-<!--           <li>Humidity</li>-->
-<!--           <hr>-->
-<!--           <li>Wind</li>-->
-<!--             <hr>-->
-<!--            <li>Pressure</li>-->
-<!--       </ul>-->
-
-<!--        </div>-->
-<!--    </div>-->
-
-
 
 
 
@@ -105,22 +86,24 @@
 <script src="js/keys.js"></script>
 
 <!--BOOTSTRAP-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
 <script>
+ $(document).ready(function () {
 
-    $.get("http://api.openweathermap.org/data/2.5/weather", {
+    $.get('http://api.openweathermap.org/data/2.5/forecast', {
         "APPID": OWM_KEY,
         "q":     "Dallas, US",
         "units": "imperial"
     }).done(function (data) {
-        console.log(data);
+        for
     }).fail(function (errors) {
         console.error(errors);
     });
 
-
+ });
 
 
 </script>
