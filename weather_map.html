@@ -34,46 +34,7 @@
     <button type="button" class="btn btn-s btn-primary btn-sm">Find</button>
 </div>
 
-<!--    <div id="forecast" class="card-deck"></div>-->
-
-    <div class="card" style="width: 18rem;">
-
-
-        <div class="card-body">
-   <table class="table" id="weatherTable">
-
-       <tbody>
-           <tr >
-              <td id="date-header"></td>
-           </tr>
-
-           <tr>
-               <td id="temp"></td>
-           </tr>
-
-
-           <tr>
-               <td id="description">description</td>
-           </tr>
-           <tr>
-               <td id="humidity">humidity</td>
-           </tr>
-           <tr>
-               <td id="wind">wind</td>
-           </tr>
-           <tr>
-               <td id="pressure">pressure</td>
-           </tr>
-       </tbody>
-
-
-   </table>
-
-        </div>
-    </div>
-
-
-
+    <ul id="dayForecast"></ul>
 
 </main>
 
@@ -96,34 +57,60 @@
 <script>
     "use strict";
     $(document).ready(function() {
+
+        // var $dateTD = $("#date-header");
+        // var $tempTD = $("#temp");
+        // var $descTD = $("#description");
+        // var $humTD = $("#humidity");
+        // var $windTD = $("#wind");
+        // var $pressTD = $("#pressure");
         //
-        var $dateTD = $("#date-header");
-        var $tempTD = $("#temp");
-        var $descTD = $("#description");
-        var $humTD = $("#humidity");
-        var $windTD = $("#wind");
-        var $pressTD = $("#pressure");
-
-
-
+        var generatedHTML =  '';
 
         $.get('http://api.openweathermap.org/data/2.5/forecast', {
             "APPID": OWM_KEY,
             "q": "Dallas, US",
             "units": "imperial"
-        }).done(function (data) {
-            console.log(data);
-
-            $dateTD.text(data.list[10]["dt_txt"]);
-            $tempTD.text(data.list[10].main.temp);
-            $descTD.text(data.list[10].clouds.all);
-            $humTD.text(data.list[10].humidity);
-            $windTD.text(data.list[10].wind.speed);
-            $pressTD.text(data.list[10].main.pressure);
+        }).done(function (weatherForecast) {
+            console.log(weatherForecast.list);
 
 
-        }).fail(function (errors) {
-            console.error(errors);
+
+            $('.dayForecast').append(generatedHTML);
+
+                for(var x = 1; x <= 5; x++){
+                    console.log(weatherForecast.list);
+
+                    generatedHTML =
+                        "<li>"+weatherForecast.list[x]["dt_txt"]+"</li>";
+                    " <li>"+weatherForecast.list[x].main.temp+"</li>";
+                    " <li>"+weatherForecast.list[x].clouds.all+"</li>";
+                    "<li> "+weatherForecast.list[x].main.humidity+"</li>";
+                    "<li>"+weatherForecast.list[x].wind.speed+"</li>";
+                    " <li>"+weatherForecast.list[x].main.pressure+"</li>";
+
+                    $('#dayForecast').append(generatedHTML);
+                }
+                        }).fail(function (errors) {
+                    console.error(errors);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         });
