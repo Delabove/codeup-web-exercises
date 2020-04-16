@@ -7,38 +7,33 @@
 
     <title>Weather API</title>
 
-<!--    <style>-->
-<!--        ul {-->
-<!--            list-style: none;-->
-<!--        }-->
-<!--        #header {-->
-<!--            border-top-width: 0;-->
-<!--            background-color: #efefef;-->
-<!--        }-->
-<!--        span {-->
-<!--            font-size: 14px;-->
-<!--        }-->
-<!--    </style>-->
+    <style>
+        body {
+            margin-left: 1.8em;
+            padding: 0;
+        }
+        .card {
+            width: 17rem;
+        }
+    </style>
 
 
 </head>
 <body>
 
-<main class="container">
+<!--<main class="container">-->
     <h4>Weather App</h4>
 
 <div>
-    <span>Place</span>
+    <span class="mr-3">Place</span>
 
-    <input type="text" class="m-3"  placeholder="Search City" >
+    <input type="text" class="mb-3 mr-3" style="border: 1px solid lightgrey"  placeholder="Search City" >
     <button type="button" class="btn btn-s btn-primary btn-sm">Find</button>
 </div>
-    <div class="row">
-        <div class="col-sm-6">
-    <div class="card" id="dayForecast" style="width: 18rem;"></div>
-    </div>
-    </div>
-</main>
+
+    <div class="row"  id="dayForecast"></div>
+
+<!--</main>-->
 
 
 
@@ -106,17 +101,16 @@
     }).done(function (data) {
         console.log(data.list);
 
-        // getForecast(data);
-
 
 var getForecast = "";
 
 for(var x = 0; x < 5; x++) {
     getForecast =
+        "<div class='card mr-3'>"+
         "<table class='table' >" +
                " <tbody>"+
                   "  <tr>" +
-                    "<td>"+data.list[x]["dt_txt"]+"</td>"+
+                    "<td style='background-color: #f5f5f5'>"+data.list[x]["dt_txt"].substring(0, 11)+"</td>"+
                   "  </tr>" +
 
                    " <tr>" +
@@ -135,22 +129,35 @@ for(var x = 0; x < 5; x++) {
                     "<td>"+data.list[x].main.pressure+"</td>" +
                   "  </tr>" +
                " </tbody> " +
-   " </table>";
+   " </table>"+
+    "</div>";
 
 
 
     $("#dayForecast").append(getForecast);
-
-
-
     console.log(getForecast);
 }
+
     }).fail(function (errors) {
         console.error(errors);
     });
     });
 
+$(".btn").click(function () {
 
+    $.get('http://api.openweathermap.org/data/2.5/forecast', {
+        "APPID": OWM_KEY,
+        "q": input.value,
+        "units": "imperial"
+    }).done(function (data) {
+        console.log(data.list);
+
+
+    }).fail(function (errors) {
+        console.error(errors);
+    });
+
+})
 </script>
 
 </body>
