@@ -40,12 +40,15 @@
 <body>
 
 <!--<main class="container">-->
+
+<!--BLUE HEADER-->
 <div class="row bg-primary">
 
     <h4 class="pl-4" style="color: white" >Weather App</h4>
-    <span id="error"></span>
 
 </div>
+
+<!--SEARCH FOR CITY-->
 
 <div class="pt-3 ml-3">
 
@@ -55,7 +58,14 @@
 
 </div>
 
+<!--NO INPUT ALERT-->
+<span id="error" style="color: red"></span>
+
+
+<!--CARDS-->
     <div class="row"  id="dayForecast"></div>
+
+<!--MAP-->
 
 <div id='map' style='width: 100%; height: 300px; position: relative;'></div>
 
@@ -109,72 +119,108 @@
                     "  </tr>" +
 
                     " <tr>" +
-                    " <td>" + data.list[x].main.temp + "</td>" +
+                    " <td id='temp'>" + data.list[x].main.temp + "</td>" +
                     " </tr>" +
                     "   <tr>" +
-                    " <td>" + data.list[x].clouds.all + "</td>" +
+                    " <td id='clouds'>" + data.list[x].clouds.all + "</td>" +
                     " </tr>" +
                     " <tr>" +
-                    " <td>" + data.list[x].main.humidity + "</td>" +
+                    " <td id='humid'>" + data.list[x].main.humidity + "</td>" +
                     "   </tr>" +
                     "   <tr>" +
-                    "<td>" + data.list[x].wind.speed + "</td>" +
+                    "<td id='wind'>" + data.list[x].wind.speed + "</td>" +
                     " </tr>" +
                     " <tr>" +
-                    "<td>" + data.list[x].main.pressure + "</td>" +
+                    "<td id='pressure'>" + data.list[x].main.pressure + "</td>" +
                     "  </tr>" +
                     " </tbody> " +
                     " </table>" +
                     "</div>";
 
                 $("#dayForecast").append(getForecast);
-                console.log(getForecast);
+                // console.log(getForecast);
+            }
+// CLOUD ICONS
+            var getClouds = function(clouds) {
+                if ( 100 < clouds && clouds < 90 ) {
+                    var condition = {
+                        cloudNumber: 6,
+                        cloudText: 'Cloudy',
+                        cloudyImage: "http://openweathermap.org/img/wn/02n@2x.png"
+                    };
+                    return condition;
+                } else if ( 89 < clouds && clouds < 60 ) {
+                    var condition = {
+                        cloudNumber: 5,
+                        cloudText: 'Mostly Cloudy',
+                        cloudyImage: "http://openweathermap.org/img/wn/02n@2x.png",
+                    };
+                    return condition;
+                } else if ( 59 < clouds && clouds < 30 ) {
+                    var condition = {
+                        cloudNumber: 4,
+                        cloudText:'Partly Cloudy',
+                        cloudyImage: "http://openweathermap.org/img/wn/03n@2x.png"
+                    };
+                } else if (29 < clouds && clouds > 20) {
+                    var condition =  {
+                        cloudNumber: 3,
+                        cloudText: 'Mostly Sunny'
+                    };
+                    return condition;
+                } else if ( 19 > clouds && clouds > 10 ) {
+                    var condition = {
+                        cloudNumber: 2,
+                        cloudText: 'Sunny to Mostly Sunny'
+                    };
+                    return condition;
+                } else {
+                    var condition = {
+                        cloudNumber: 1,
+                        cloudText: 'Sunny'
+                    };
+                    $("#clouds").append(getClouds());
+                    return condition;
+
+                }
             }
 
 
+
+
+
+
+
+
+// SEARCH CITY FORECAST BUTTON
             $("#getWeather").click(function() {
 
                 var findCity = $("#citySearch").val();
-                $("#dayForecast").empty(getForecast.list);
+                // console.log("You typed " + findCity);
 
-                if(findCity !== "") {
-                    // $.ajax({
-                    //     url: "http//api.openweathermap.org/data/2.5/forecast?q=" + findCity + "&appid=" + OWM_KEY ,
-                    //     type: "GET",
-                    //     dataType: "jsonp",
-                    //     success: function (data) {
-                    //         console.log(getForcast)
-                    $.get('http://api.openweathermap.org/data/2.5/forecast?q='+ findCity + "&appid=" + OWM_KEY , {
-                        "units": "imperial"
+
+                if(findCity != "") {
+                    $.get('http://api.openweathermap.org/data/2.5/forecast?q='+ findCity + "&units=imperial&appid=" + OWM_KEY , {
+
                     }).done(function (data) {
-
+                        //
                         $("#dayForecast").append(getForecast);
+                        console.log(data);
 
-                        console.log(data.list);
 
                     });
 
-                } else {
-
+                } else if (findCity === "") {
+                    $("#error").html('***Field cannot be empty***');
                 }
 
-                $("#error").html('Field cannot be empty');
+
 
 
             });
         })
 
     });
-
-
-
-    //
-    // }).fail(function (errors) {
-    //     console.error(errors);
-
-
-
-
 
 
 
