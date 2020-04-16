@@ -7,18 +7,18 @@
 
     <title>Weather API</title>
 
-    <style>
-        ul {
-            list-style: none;
-        }
-        #header {
-            border-top-width: 0;
-            background-color: #efefef;
-        }
-        span {
-            font-size: 14px;
-        }
-    </style>
+<!--    <style>-->
+<!--        ul {-->
+<!--            list-style: none;-->
+<!--        }-->
+<!--        #header {-->
+<!--            border-top-width: 0;-->
+<!--            background-color: #efefef;-->
+<!--        }-->
+<!--        span {-->
+<!--            font-size: 14px;-->
+<!--        }-->
+<!--    </style>-->
 
 
 </head>
@@ -34,7 +34,7 @@
     <button type="button" class="btn btn-s btn-primary btn-sm">Find</button>
 </div>
 
-    <ul id="dayForecast"></ul>
+    <div id="dayForecast"></div>
 
 </main>
 
@@ -54,71 +54,103 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
+<!--<script>-->
+<!--    "use strict";-->
+<!--    (function() {-->
+
+
+<!--    function generatedHTML(forecastArray) {-->
+<!--        var HTML = "";-->
+
+<!--        forecastArray.forEach(day)-->
+<!--        {-->
+<!--            console.log(day);-->
+<!--            HTML =-->
+<!--                // "<tr>" +-->
+<!--                " <td> " + day.list[1]["dt_txt"] + "</td>" +-->
+<!--                // " </tr>" +-->
+<!--                // " <tr>" +-->
+<!--                " <td>" + day.list[1].main.temp + "</td>" +-->
+<!--                // "  </tr>" +-->
+<!--                " <tr>" +-->
+<!--                "<td>" + day.list[1].clouds.all + "</td>" +-->
+<!--                // " </tr>" +-->
+<!--                // "  <tr>" +-->
+<!--                " <td>" + day.list[1].main.humidity + "</td>" +-->
+<!--                // "  </tr>" +-->
+<!--                // "  <tr>" +-->
+<!--                "  <td>" + day.list[1].wind.speed + " </td>" +-->
+<!--                // "  </tr>" +-->
+<!--                " <td>+day.list[1].main.pressure+</td>"-->
+<!--            // "  </tr>";-->
+
+<!--        }-->
+<!--        $("#dayForecast").append(HTML);-->
+<!--        }-->
+<!--    })();-->
+<!--// </script>-->
+
+
 <script>
+
     "use strict";
-    $(document).ready(function() {
-
-        // var $dateTD = $("#date-header");
-        // var $tempTD = $("#temp");
-        // var $descTD = $("#description");
-        // var $humTD = $("#humidity");
-        // var $windTD = $("#wind");
-        // var $pressTD = $("#pressure");
-        //
-        var generatedHTML =  '';
-
-        $.get('http://api.openweathermap.org/data/2.5/forecast', {
-            "APPID": OWM_KEY,
-            "q": "Dallas, US",
-            "units": "imperial"
-        }).done(function (weatherForecast) {
-            console.log(weatherForecast.list);
+    $(document).ready(function () {
 
 
+    $.get('http://api.openweathermap.org/data/2.5/forecast', {
+        "APPID": OWM_KEY,
+        "q": "Dallas, US",
+        "units": "imperial"
+    }).done(function (data) {
+        console.log(data.list);
 
-            $('.dayForecast').append(generatedHTML);
-
-                for(var x = 1; x <= 5; x++){
-                    console.log(weatherForecast.list);
-
-                    generatedHTML =
-                        "<li>"+weatherForecast.list[x]["dt_txt"]+"</li>";
-                    " <li>"+weatherForecast.list[x].main.temp+"</li>";
-                    " <li>"+weatherForecast.list[x].clouds.all+"</li>";
-                    "<li> "+weatherForecast.list[x].main.humidity+"</li>";
-                    "<li>"+weatherForecast.list[x].wind.speed+"</li>";
-                    " <li>"+weatherForecast.list[x].main.pressure+"</li>";
-
-                    $('#dayForecast').append(generatedHTML);
-                }
-                        }).fail(function (errors) {
-                    console.error(errors);
+        // getForecast(data);
 
 
+var getForecast = "";
 
+for(var x = 0; x < 5; x++) {
+    getForecast =
+        "<table >" +
+               " <tbody>"+
+                  "  <tr>" +
+                    "<td>"+data.list[x]["dt_txt"]+"</td>"+
+                  "  </tr>" +
+                   " <tr>" +
+                   " <td>"+data.list[x].main.temp+"</td>" +
+                   " </tr>" +
+                 "   <tr>" +
+                   " <td>"+data.list[x].clouds.all+"</td>" +
+                   " </tr>" +
+                   " <tr>" +
+                   " <td>"+data.list[x].main.humidity+"</td>" +
+                 "   </tr>" +
+                 "   <tr>" +
+                    "<td>"+data.list[x].wind.speed+"</td>" +
+                   " </tr>" +
+                   " <tr>" +
+                    "<td>"+data.list[x].main.pressure+"</td>" +
+                  "  </tr>" +
+               " </tbody> " +
+   " </table>";
 
+    if(x <= 5){
+        x + 8;
+    }
 
-
-
-
-
-
+    $("#dayForecast").append(getForecast);
 
 
 
-
-
-
-
-
-
-
-        });
+    console.log(getForecast);
+}
+    }).fail(function (errors) {
+        console.error(errors);
+    });
     });
 
 
 </script>
-
 
 </body>
 </html>
