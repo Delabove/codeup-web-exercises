@@ -40,13 +40,19 @@
 <body>
 
 <!--<main class="container">-->
-<div class="row bg-primary"><h4 class="pl-4" style="color: white" >Weather App</h4></div>
+<div class="row bg-primary">
+
+    <h4 class="pl-4" style="color: white" >Weather App</h4>
+    <span id="error"></span>
+
+</div>
 
 <div class="pt-3 ml-3">
-    <span class="mr-3">Place</span>
 
-    <input type="text" class="mb-3 mr-3" style="border: 1px solid lightgrey"  placeholder="Search City" >
-    <button type="button" class="btn btn-s btn-primary btn-sm">Find</button>
+    <span class="mr-3">Place</span>
+    <input id="citySearch" type="text" class="mb-3 mr-3" style="border: 1px solid lightgrey"  placeholder="Search City" >
+    <button id = "getWeather" type="button" class="btn btn-s btn-primary btn-sm">Find</button>
+
 </div>
 
     <div class="row"  id="dayForecast"></div>
@@ -83,71 +89,90 @@
     "use strict";
     $(document).ready(function () {
 
-
-    $.get('http://api.openweathermap.org/data/2.5/forecast', {
-        "APPID": OWM_KEY,
-        "q": "Dallas, US",
-        "units": "imperial"
-    }).done(function (data) {
-        console.log(data.list);
-
-
-var getForecast = "";
-
-for(var x = 0; x < 5; x++) {
-    getForecast =
-        "<div class='card mr-1'>"+
-        "<table class='table' >" +
-               " <tbody>"+
-                  "  <tr>" +
-                    "<td style='background-color: #f5f5f5'>"+data.list[x]["dt_txt"].substring(0, 11)+"</td>"+
-                  "  </tr>" +
-
-                   " <tr>" +
-                   " <td>"+data.list[x].main.temp+"</td>" +
-                   " </tr>" +
-                 "   <tr>" +
-                   " <td>"+data.list[x].clouds.all+"</td>" +
-                   " </tr>" +
-                   " <tr>" +
-                   " <td>"+data.list[x].main.humidity+"</td>" +
-                 "   </tr>" +
-                 "   <tr>" +
-                    "<td>"+data.list[x].wind.speed+"</td>" +
-                   " </tr>" +
-                   " <tr>" +
-                    "<td>"+data.list[x].main.pressure+"</td>" +
-                  "  </tr>" +
-               " </tbody> " +
-   " </table>"+
-    "</div>";
+        $.get('http://api.openweathermap.org/data/2.5/forecast', {
+            "APPID": OWM_KEY,
+            "q": "Dallas, US",
+            "units": "imperial"
+        }).done(function (data) {
+            console.log(data.list);
 
 
+            var getForecast = "";
 
-    $("#dayForecast").append(getForecast);
-    console.log(getForecast);
-}
+            for (var x = 0; x < 5; x++) {
+                getForecast =
+                    "<div class='card mr-1'>" +
+                    "<table class='table' >" +
+                    " <tbody>" +
+                    "  <tr>" +
+                    "<td style='background-color: #f5f5f5'>" + data.list[x]["dt_txt"].substring(0, 11) + "</td>" +
+                    "  </tr>" +
 
-    }).fail(function (errors) {
-        console.error(errors);
+                    " <tr>" +
+                    " <td>" + data.list[x].main.temp + "</td>" +
+                    " </tr>" +
+                    "   <tr>" +
+                    " <td>" + data.list[x].clouds.all + "</td>" +
+                    " </tr>" +
+                    " <tr>" +
+                    " <td>" + data.list[x].main.humidity + "</td>" +
+                    "   </tr>" +
+                    "   <tr>" +
+                    "<td>" + data.list[x].wind.speed + "</td>" +
+                    " </tr>" +
+                    " <tr>" +
+                    "<td>" + data.list[x].main.pressure + "</td>" +
+                    "  </tr>" +
+                    " </tbody> " +
+                    " </table>" +
+                    "</div>";
+
+                $("#dayForecast").append(getForecast);
+                console.log(getForecast);
+            }
+
+
+            $("#getWeather").click(function() {
+
+                var findCity = $("#citySearch").val();
+                $("#dayForecast").empty(getForecast.list);
+
+                if(findCity !== "") {
+                    // $.ajax({
+                    //     url: "http//api.openweathermap.org/data/2.5/forecast?q=" + findCity + "&appid=" + OWM_KEY ,
+                    //     type: "GET",
+                    //     dataType: "jsonp",
+                    //     success: function (data) {
+                    //         console.log(getForcast)
+                    $.get('http://api.openweathermap.org/data/2.5/forecast?q='+ findCity + "&appid=" + OWM_KEY , {
+                        "units": "imperial"
+                    }).done(function (data) {
+
+                        $("#dayForecast").append(getForecast);
+
+                        console.log(data.list);
+
+                    });
+
+                } else {
+
+                }
+
+                $("#error").html('Field cannot be empty');
+
+
+            });
+        })
+
     });
-    });
-
-$(".btn").click(function () {
-
-    $.get('http://api.openweathermap.org/data/2.5/forecast', {
-        "APPID": OWM_KEY,
-        "q": input.value,
-        "units": "imperial"
-    }).done(function (data) {
-        console.log(data.list);
 
 
-    }).fail(function (errors) {
-        console.error(errors);
-    });
 
-})
+    //
+    // }).fail(function (errors) {
+    //     console.error(errors);
+
+
 
 
 
