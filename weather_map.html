@@ -17,7 +17,21 @@
             padding: 0;
         }
         h4{
-            margin: 0;
+            padding: 10px;
+        }
+
+        ul {
+            list-style: none;
+
+        }
+        p {
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-weight: bold;
+            padding-top: 1em;
+        }
+        .container{
+            position: relative;
+            box-shadow: black;
         }
         #dayForecast{
             margin: 1em 1em;
@@ -26,41 +40,35 @@
         .card {
             margin-left: 1.7em;
             width: 15rem;
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.17);
+
         }
 
-        .fas {
-            color: deeppink;
-            font-size: 24px;
-        }
-        .far {
-            color: royalblue;
-            padding: 30px;
-            font-weight: bolder;
-            font-size: 24px;
-        }
+        .fa-sun{
+            font-size: 50px;
+            color: #ffef56;
 
-        td  {
-            font-weight: bolder;
+        }
+        .fa-cloud{
             font-size: 20px;
-            color: gray;
-            margin-right: 3em;
-
-
+            color: #40b5ff;
         }
 
-        #date {
-            margin-left: 3em;
+        .fa-calendar-check{
+            font-size: 30px;
+            color: red;
         }
-
         #map {
-            position: relative;
+            position: absolute;
             top: 3em;
             bottom: 0;
             width: 100%;
+            border: solid 2px #d7d7d7;
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.17);
+
         }
 
-
-    </style>
+        </style>
 
 
 </head>
@@ -75,13 +83,17 @@
 
 </div>
 
+<div>
+    <h1 class="main-header pt-4" style="text-align: center">5-Day Weather Forecast</h1>
+</div>
+
 <!--SEARCH FOR CITY-->
 
-<div class="pt-3 ml-3">
+<div class="row pt-5 ml-3">
 
-    <span class="mr-3">Place</span>
-    <input id="citySearch" type="text" class="mb-3 mr-3" style="border: 1px solid lightgrey"  placeholder="Search City" >
-    <button id = "getWeather" type="button" class="btn btn-s btn-primary btn-sm">Find</button>
+    <span class="mr-3 pt-2">Place</span>
+    <input id="citySearch" type="text" class=" mr-3" style="border: 1px solid lightgrey"  placeholder="Search City" >
+    <button id = "getWeather" type="button" class="btn btn-primary ">Find</button>
 
 </div>
 
@@ -94,7 +106,9 @@
 
 <!--MAP-->
 
-<div id='map' style='width: 100%; height: 300px; position: relative;'></div>
+<div class="container" id='map' style='width: 100%; height: 300px; position: relative;'></div>
+<div class="marker"></div>
+
 
 <!--</main>-->
 
@@ -139,172 +153,98 @@
 
             for (var x = 0; x < 40; x += 8) {
                 getForecast =
-                    "<div class='card mr-1'>" +
-                    "<table class='table' >" +
-                    " <tbody>" +
-                    "  <tr>" +
-                    "<th class=' far fa-calendar-check ml-5' id='date'>"+data.list[x]["dt_txt"].substring(0, 11)+ "</th>" +
-                    "  </tr>" +
-
-                    " <tr>" +
-                    " <td id='temp'><span class='fas fa-cloud-sun ml-5'>"+data.list[x].main.temp+"</span></td>" +
-                    " </tr>" +
-                    "   <tr>" +
-                    " <td id='clouds'>"+data.list[x].clouds.all+"</td>" +
-                    " </tr>" +
-                    " <tr>" +
-                    " <td id='humid'>" + data.list[x].main.humidity + "</td>" +
-                    "   </tr>" +
-                    "   <tr>" +
-                    "<td class='fas fa-wind ml-2 mr-1' id='wind'>" + data.list[x].wind.speed+ "</td>" +
-                    " </tr>" +
-                    " <tr>" +
-                    "<td id='pressure'>" + data.list[x].main.pressure + "</td>" +
-                    "  </tr>" +
-                    " </tbody> " +
-                    " </table>" +
+                    "<div class='card text-center mr-1'>" +
+                    "<div class='card-header bg-light' style='font-weight: bold' id='date'><i class=\"far fa-calendar-check\"></i><br>" + data.list[x]["dt_txt"].substring(0, 11) + "</div>" +
+                    " <div class='card-body'>" +
+                    "  <ul class='list-group list-group-flush'>" +
+                    " <li class='list-group-item' style='font-weight: bold' id='temp'><i class=\"fas fa-sun\"></i><br> Temp: " + data.list[x].main.temp + "</li>" +
+                    " <li class='list-group-item' id='clouds'><i class=\"fas fa-cloud\"></i> Cloud Forecast: " + data.list[x].clouds.all + "</li>" +
+                    " <li class='list-group-item' id='humid'></i> Humidity Forecast: " + data.list[x].main.humidity + "</li>" +
+                    "<li class='list-group-item' id='winds'><br> Wind Forecast: " + data.list[x].wind.speed + "</li>" +
+                    "<li class='list-group-item' id='pressure'>Pressure Forecast: " + data.list[x].main.pressure + "</li>" +
+                    "</ul>" +
+                    " </div> " +
+                    " </div>" +
                     "</div>";
 
 
                 $('#dayForecast').append(getForecast);
-            }
-
-            // console.log(getForecast);
-            // }
-
-// CLOUD ICONS
-            var getClouds = function(cloud) {
-                if ( 100 < cloud && cloud < 90 ) {
-                    var cloudy = {
-                        cloudNumber: 6,
-                        cloudText: 'Cloudy',
-                        cloudyImage: "http://openweathermap.org/img/wn/02n@2x.png"
-                    };
-                    return cloudy;
-                } else if ( 89 < cloud && cloud < 60 ) {
-                    var mostCloudy = {
-                        cloudNumber: 5,
-                        cloudText: 'Mostly Cloudy',
-                        cloudyImage: "http://openweathermap.org/img/wn/02n@2x.png",
-                    };
-                    return mostCloudy;
-                } else if ( 59 < cloud && cloud < 30 ) {
-                    var partCloudy = {
-                        cloudNumber: 4,
-                        cloudText:'Partly Cloudy',
-                        cloudyImage: "http://openweathermap.org/img/wn/03n@2x.png"
-                    }; return partCloudy;
-                } else if (29 < cloud && cloud > 20) {
-                    var mostlySun =  {
-                        cloudNumber: 3,
-                        cloudText: 'Mostly Sunny'
-                    };
-                    return mostlySun;
-                } else if ( 19 > cloud && cloud > 10 ) {
-                    var sunMostSun = {
-                        cloudNumber: 2,
-                        cloudText: 'Sunny to Mostly Sunny'
-                    };
-                    return sunMostSun;
-                } else {
-                    var sunny = {
-                        cloudNumber: 1,
-                        cloudText: 'Sunny'
-                    }; return sunny
-                    // $('#dayForecast').append(getForecast);
-                }
-            }
-
-            console.log(getClouds);
-
 
 // SEARCH CITY FORECAST BUTTON
-            $("#getWeather").click(function () {
+                $("#getWeather").click(function () {
 
-                var findCity = $("#citySearch").val();
-                // console.log("You typed " + findCity);
-
-
-                if (findCity != "") {
-                    $.get('http://api.openweathermap.org/data/2.5/forecast?q=' + findCity + "&units=imperial&appid=" + OWM_KEY, {}).done(function (data) {
-                        //
+                    var findCity = $("#citySearch").val();
+                    // console.log("You typed " + findCity);
 
 
-                        var getForecast = "";
-
-                        $('#dayForecast').empty();
-
-                        for (var x = 0; x < 40; x += 8) {
-                            getForecast =
-                                "<div class='card mr-1'>" +
-                                "<table class='table' >" +
-                                " <tbody>" +
-                                "  <tr>" +
-                                "<th id='date'>" + data.list[x]["dt_txt"].substring(0, 11) + "</th>" +
-                                "  </tr>" +
-
-                                " <tr>" +
-                                " <td class='ml-1' id='temp'> "+data.list[x].main.temp+"</td>" +
-                                " </tr>" +
-                                "   <tr>" +
-                                " <td class='ml-1' id='clouds'>" + data.list[x].clouds.all + "</td>" +
-                                " </tr>" +
-                                " <tr>" +
-                                " <td class='ml-1' id='humid'>" + data.list[x].main.humidity + "</td>" +
-                                "   </tr>" +
-                                "   <tr>" +
-                                "<td class='ml-1' id='wind'>" + data.list[x].wind.spee + "</td>" +
-                                " </tr>" +
-                                " <tr>" +
-                                "<td class='ml-1' id='pressure'>" + data.list[x].main.pressure + "</td>" +
-                                "  </tr>" +
-                                " </tbody> " +
-                                " </table>" +
-                                "</div>";
+                    if (findCity != "") {
+                        $.get('http://api.openweathermap.org/data/2.5/forecast?q=' + findCity + "&units=imperial&appid=" + OWM_KEY, {}).done(function (data) {
+                            //
 
 
-                        $("#dayForecast").append(getForecast);
-                        console.log(data);
-                        }
+                            var getForecast = "";
 
-                    });
+                            $('#dayForecast').empty();
 
-                } else if (findCity === "") {
-                    $("#error").html('***Field cannot be empty***');
-                }
+                            for (var x = 0; x < 40; x += 8) {
+                                getForecast =
+                                    "<div class='card text-center mr-1'>" +
+                                    "<div class='card-header bg-light' id='date'><i class=\"far fa-calendar-check\"></i><br>" + data.list[x]["dt_txt"].substring(0, 11) + "</div>" +
+                                    " <div class='card-body'>" +
+                                    "  <ul class='list-group list-group-flush'>" +
+                                    " <li class='list-group-item' id='temp'> Temp: " + data.list[x].main.temp + "<br><i class=\"fas fa-sun\"></i></li>" +
+                                    " <li class='list-group-item' id='clouds'><i class=\"fas fa-cloud\"></i> Cloud Forecast: " + data.list[x].clouds.all + "</li>" +
+                                    " <li class='list-group-item' id='humid'></i> Humidity Forecast: " + data.list[x].main.humidity + "</li>" +
+                                    "<li class='list-group-item' id='winds'> Wind Forecast: " + data.list[x].wind.speed + "</li>" +
+                                    "<li class='list-group-item' id='pressure'>Pressure Forecast: " + data.list[x].main.pressure + "</li>" +
+                                    "</ul>" +
+                                    " </div> " +
+                                    " </div>" +
+                                    "</div>";
 
 
-            })
+                                $("#dayForecast").append(getForecast);
+                                console.log(data);
+                            }
 
+                        });
+
+                    } else if (findCity === "") {
+                        $("#error").html('***Field cannot be empty***');
+                    }
+
+
+                })
+
+            }
         });
     })
-
-
 
 
 </script>
 <!--// MAPBOX-->
 <script>
-    console.log("token: " + mapBoxToken);
+    // console.log("token: " + mapBoxToken);
 
     mapboxgl.accessToken = mapBoxToken;
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 10,
+        zoom: 13,
         center: [-96.796989, 32.776665],
 
     });
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-96.796989, 32.776665])
+        .addTo(map);
 
-    self.map.on("click", function(e){
-        console.log("background click", e.lngLat);
-        var geojson = {
-            type: "FeatureCollection",
-            features: [{
-                type:"Feature",
-                geometry: { type: "Point", coordinates: [ e.lngLat.lng, e.lngLat.lat ]}
-            }]
-        };
+    var dallasPopup = new mapboxgl.Popup()
+        .setHTML("<p style='color: royalblue; font-size: 18px; text-align: center;'>Dallas...where big things happen!!</p>")
+        .addTo(map);
+
+    marker.setPopup(dallasPopup);
+
+
         self.map.addSource("pins", {
             "type": "geojson",
             "data": geojson
@@ -318,7 +258,7 @@
                 "circle-radius": 5
             }
         });
-    });
+    // });
 
 </script>
 
