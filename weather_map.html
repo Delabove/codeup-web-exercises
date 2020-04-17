@@ -1,20 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+
     <title>Weather API</title>
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <style>
         body {
-            margin-left: 1.8em;
+           margin: 0;
             padding: 0;
         }
-        .card {
-            width: 17rem;
+        h4{
+            margin: 0;
         }
+        #dayForecast{
+            margin: 1em 1em;
+            padding: .5em;
+        }
+        .card {
+            margin-left: 1.7em;
+            width: 15rem;
+        }
+
+        .fas {
+            color: deeppink;
+            font-size: 24px;
+        }
+        .far {
+            color: royalblue;
+            padding: 30px;
+            font-weight: bolder;
+            font-size: 24px;
+        }
+
+        td  {
+            font-weight: bolder;
+            font-size: 20px;
+            color: gray;
+            margin-right: 3em;
+
+
+        }
+
+        #date {
+            margin-left: 3em;
+        }
+
+        #map {
+            position: relative;
+            top: 3em;
+            bottom: 0;
+            width: 100%;
+        }
+
+
     </style>
 
 
@@ -22,16 +67,34 @@
 <body>
 
 <!--<main class="container">-->
-    <h4>Weather App</h4>
 
-<div>
-    <span class="mr-3">Place</span>
+<!--BLUE HEADER-->
+<div class="row bg-primary">
 
-    <input type="text" class="mb-3 mr-3" style="border: 1px solid lightgrey"  placeholder="Search City" >
-    <button type="button" class="btn btn-s btn-primary btn-sm">Find</button>
+    <h4 class="pl-4" style="color: white" >Weather App</h4>
+
 </div>
 
+<!--SEARCH FOR CITY-->
+
+<div class="pt-3 ml-3">
+
+    <span class="mr-3">Place</span>
+    <input id="citySearch" type="text" class="mb-3 mr-3" style="border: 1px solid lightgrey"  placeholder="Search City" >
+    <button id = "getWeather" type="button" class="btn btn-s btn-primary btn-sm">Find</button>
+
+</div>
+
+<!--NO INPUT ALERT-->
+<span id="error" style="color: red"></span>
+
+
+<!--CARDS-->
     <div class="row"  id="dayForecast"></div>
+
+<!--MAP-->
+
+<div id='map' style='width: 100%; height: 300px; position: relative;'></div>
 
 <!--</main>-->
 
@@ -46,46 +109,16 @@
 <!--KEYS-->
 <script src="js/keys.js"></script>
 
+<!--MAPBOX-->
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="js/mapbox_maps_api.js"></script>
+
+
 <!--BOOTSTRAP-->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
-<!--<script>-->
-<!--    "use strict";-->
-<!--    (function() {-->
-
-
-<!--    function generatedHTML(forecastArray) {-->
-<!--        var HTML = "";-->
-
-<!--        forecastArray.forEach(day)-->
-<!--        {-->
-<!--            console.log(day);-->
-<!--            HTML =-->
-<!--                // "<tr>" +-->
-<!--                " <td> " + day.list[1]["dt_txt"] + "</td>" +-->
-<!--                // " </tr>" +-->
-<!--                // " <tr>" +-->
-<!--                " <td>" + day.list[1].main.temp + "</td>" +-->
-<!--                // "  </tr>" +-->
-<!--                " <tr>" +-->
-<!--                "<td>" + day.list[1].clouds.all + "</td>" +-->
-<!--                // " </tr>" +-->
-<!--                // "  <tr>" +-->
-<!--                " <td>" + day.list[1].main.humidity + "</td>" +-->
-<!--                // "  </tr>" +-->
-<!--                // "  <tr>" +-->
-<!--                "  <td>" + day.list[1].wind.speed + " </td>" +-->
-<!--                // "  </tr>" +-->
-<!--                " <td>+day.list[1].main.pressure+</td>"-->
-<!--            // "  </tr>";-->
-
-<!--        }-->
-<!--        $("#dayForecast").append(HTML);-->
-<!--        }-->
-<!--    })();-->
-<!--// </script>-->
 
 
 <script>
@@ -93,72 +126,202 @@
     "use strict";
     $(document).ready(function () {
 
-
-    $.get('http://api.openweathermap.org/data/2.5/forecast', {
-        "APPID": OWM_KEY,
-        "q": "Dallas, US",
-        "units": "imperial"
-    }).done(function (data) {
-        console.log(data.list);
-
-
-var getForecast = "";
-
-for(var x = 0; x < 5; x++) {
-    getForecast =
-        "<div class='card mr-3'>"+
-        "<table class='table' >" +
-               " <tbody>"+
-                  "  <tr>" +
-                    "<td style='background-color: #f5f5f5'>"+data.list[x]["dt_txt"].substring(0, 11)+"</td>"+
-                  "  </tr>" +
-
-                   " <tr>" +
-                   " <td>"+data.list[x].main.temp+"</td>" +
-                   " </tr>" +
-                 "   <tr>" +
-                   " <td>"+data.list[x].clouds.all+"</td>" +
-                   " </tr>" +
-                   " <tr>" +
-                   " <td>"+data.list[x].main.humidity+"</td>" +
-                 "   </tr>" +
-                 "   <tr>" +
-                    "<td>"+data.list[x].wind.speed+"</td>" +
-                   " </tr>" +
-                   " <tr>" +
-                    "<td>"+data.list[x].main.pressure+"</td>" +
-                  "  </tr>" +
-               " </tbody> " +
-   " </table>"+
-    "</div>";
+        $.get('http://api.openweathermap.org/data/2.5/forecast', {
+            "APPID": OWM_KEY,
+            "q": "Dallas, US",
+            "units": "imperial"
+        }).done(function (data) {
+            console.log(data.list);
 
 
-
-    $("#dayForecast").append(getForecast);
-    console.log(getForecast);
-}
-
-    }).fail(function (errors) {
-        console.error(errors);
-    });
-    });
-
-$(".btn").click(function () {
-
-    $.get('http://api.openweathermap.org/data/2.5/forecast', {
-        "APPID": OWM_KEY,
-        "q": input.value,
-        "units": "imperial"
-    }).done(function (data) {
-        console.log(data.list);
+            var getForecast = "";
 
 
-    }).fail(function (errors) {
-        console.error(errors);
-    });
+            for (var x = 0; x < 40; x += 8) {
+                getForecast =
+                    "<div class='card mr-1'>" +
+                    "<table class='table' >" +
+                    " <tbody>" +
+                    "  <tr>" +
+                    "<th class=' far fa-calendar-check ml-5' id='date'>"+data.list[x]["dt_txt"].substring(0, 11)+ "</th>" +
+                    "  </tr>" +
 
-})
+                    " <tr>" +
+                    " <td id='temp'><span class='fas fa-cloud-sun ml-5'>"+data.list[x].main.temp+"</span></td>" +
+                    " </tr>" +
+                    "   <tr>" +
+                    " <td id='clouds'>"+data.list[x].clouds.all+"</td>" +
+                    " </tr>" +
+                    " <tr>" +
+                    " <td id='humid'>" + data.list[x].main.humidity + "</td>" +
+                    "   </tr>" +
+                    "   <tr>" +
+                    "<td class='fas fa-wind ml-2 mr-1' id='wind'>" + data.list[x].wind.speed+ "</td>" +
+                    " </tr>" +
+                    " <tr>" +
+                    "<td id='pressure'>" + data.list[x].main.pressure + "</td>" +
+                    "  </tr>" +
+                    " </tbody> " +
+                    " </table>" +
+                    "</div>";
+
+
+                $('#dayForecast').append(getForecast);
+            }
+
+            // console.log(getForecast);
+            // }
+
+// CLOUD ICONS
+            var getClouds = function(cloud) {
+                if ( 100 < cloud && cloud < 90 ) {
+                    var cloudy = {
+                        cloudNumber: 6,
+                        cloudText: 'Cloudy',
+                        cloudyImage: "http://openweathermap.org/img/wn/02n@2x.png"
+                    };
+                    return cloudy;
+                } else if ( 89 < cloud && cloud < 60 ) {
+                    var mostCloudy = {
+                        cloudNumber: 5,
+                        cloudText: 'Mostly Cloudy',
+                        cloudyImage: "http://openweathermap.org/img/wn/02n@2x.png",
+                    };
+                    return mostCloudy;
+                } else if ( 59 < cloud && cloud < 30 ) {
+                    var partCloudy = {
+                        cloudNumber: 4,
+                        cloudText:'Partly Cloudy',
+                        cloudyImage: "http://openweathermap.org/img/wn/03n@2x.png"
+                    }; return partCloudy;
+                } else if (29 < cloud && cloud > 20) {
+                    var mostlySun =  {
+                        cloudNumber: 3,
+                        cloudText: 'Mostly Sunny'
+                    };
+                    return mostlySun;
+                } else if ( 19 > cloud && cloud > 10 ) {
+                    var sunMostSun = {
+                        cloudNumber: 2,
+                        cloudText: 'Sunny to Mostly Sunny'
+                    };
+                    return sunMostSun;
+                } else {
+                    var sunny = {
+                        cloudNumber: 1,
+                        cloudText: 'Sunny'
+                    }; return sunny
+                    // $('#dayForecast').append(getForecast);
+                }
+            }
+
+            console.log(getClouds);
+
+
+// SEARCH CITY FORECAST BUTTON
+            $("#getWeather").click(function () {
+
+                var findCity = $("#citySearch").val();
+                // console.log("You typed " + findCity);
+
+
+                if (findCity != "") {
+                    $.get('http://api.openweathermap.org/data/2.5/forecast?q=' + findCity + "&units=imperial&appid=" + OWM_KEY, {}).done(function (data) {
+                        //
+
+
+                        var getForecast = "";
+
+                        $('#dayForecast').empty();
+
+                        for (var x = 0; x < 40; x += 8) {
+                            getForecast =
+                                "<div class='card mr-1'>" +
+                                "<table class='table' >" +
+                                " <tbody>" +
+                                "  <tr>" +
+                                "<th id='date'>" + data.list[x]["dt_txt"].substring(0, 11) + "</th>" +
+                                "  </tr>" +
+
+                                " <tr>" +
+                                " <td class='ml-1' id='temp'> "+data.list[x].main.temp+"</td>" +
+                                " </tr>" +
+                                "   <tr>" +
+                                " <td class='ml-1' id='clouds'>" + data.list[x].clouds.all + "</td>" +
+                                " </tr>" +
+                                " <tr>" +
+                                " <td class='ml-1' id='humid'>" + data.list[x].main.humidity + "</td>" +
+                                "   </tr>" +
+                                "   <tr>" +
+                                "<td class='ml-1' id='wind'>" + data.list[x].wind.spee + "</td>" +
+                                " </tr>" +
+                                " <tr>" +
+                                "<td class='ml-1' id='pressure'>" + data.list[x].main.pressure + "</td>" +
+                                "  </tr>" +
+                                " </tbody> " +
+                                " </table>" +
+                                "</div>";
+
+
+                        $("#dayForecast").append(getForecast);
+                        console.log(data);
+                        }
+
+                    });
+
+                } else if (findCity === "") {
+                    $("#error").html('***Field cannot be empty***');
+                }
+
+
+            })
+
+        });
+    })
+
+
+
+
 </script>
+<!--// MAPBOX-->
+<script>
+    console.log("token: " + mapBoxToken);
+
+    mapboxgl.accessToken = mapBoxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-96.796989, 32.776665],
+
+    });
+
+    self.map.on("click", function(e){
+        console.log("background click", e.lngLat);
+        var geojson = {
+            type: "FeatureCollection",
+            features: [{
+                type:"Feature",
+                geometry: { type: "Point", coordinates: [ e.lngLat.lng, e.lngLat.lat ]}
+            }]
+        };
+        self.map.addSource("pins", {
+            "type": "geojson",
+            "data": geojson
+        });
+        self.map.addLayer({
+            id: "pinsLayer",
+            type: "circle",
+            source: "pins",
+            paint: {
+                "circle-color": "red",
+                "circle-radius": 5
+            }
+        });
+    });
+
+</script>
+
 
 </body>
 </html>
