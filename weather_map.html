@@ -62,6 +62,7 @@
             position: absolute;
             top: 3em;
             bottom: 0;
+            height: 400px;
             width: 100%;
             border: solid 2px #d7d7d7;
             box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.17);
@@ -225,6 +226,7 @@
 <!--// MAPBOX-->
 <script>
     // console.log("token: " + mapBoxToken);
+new map
 
     mapboxgl.accessToken = mapBoxToken;
     var map = new mapboxgl.Map({
@@ -234,32 +236,27 @@
         center: [-96.796989, 32.776665],
 
     });
+
+    // Add marker
     var marker = new mapboxgl.Marker()
         .setLngLat([-96.796989, 32.776665])
         .addTo(map);
 
     var dallasPopup = new mapboxgl.Popup()
-        .setHTML("<p style='color: royalblue; font-size: 18px; text-align: center;'>Dallas...where big things happen!!</p>")
+        .setHTML("<p style='color: royalblue; font-size: 18px; text-align: center;'>Dallas, TX</p>")
         .addTo(map);
 
     marker.setPopup(dallasPopup);
 
 
-        self.map.addSource("pins", {
-            "type": "geojson",
-            "data": geojson
-        });
-        self.map.addLayer({
-            id: "pinsLayer",
-            type: "circle",
-            source: "pins",
-            paint: {
-                "circle-color": "red",
-                "circle-radius": 5
-            }
-        });
-    // });
+//ADD MARKER FUNCTION
+    function addMarker(coords) {
+        var marker = new mapboxgl.Marker();
+        center: 'coords'
+        .addTo(map);
+//
 
+    }
 </script>
 
 
