@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promises</title>
+
+</head>
+<body>
+
+
+<script>
+    "use strict";
+
+    let url = 'https://api.github.com/users';
+
+    //FILLED IN THE NECESSARY COMPONENTS  OF THE FETCH
+    // fetch(url, {headers: {'Authorization': 'git_KEY'}})
+    //     .then(response => console.log(response))
+    //     .catch(error => console.error(error));
+
+
+    // CREATED VARIABLE FOR THE PROMISE
+    const gitPromise = fetch(url, {headers: {'Authorization': 'git_KEY'}});
+
+    gitPromise.then( response => {
+        response.json().then( users => {
+            console.log(users);
+            users.forEach( userObj  => {
+                // do something with the username login
+                console.log(userObj.login);
+            });
+        });
+    });
+
+
+    // const githubPromise = fetch(url, {headers: {'Authorization': 'git_KEY'}});
+    // const bitbucketPromise = fetch('https://api.bitbucket.org/2.0/repositories');
+    //
+    // Promise.all([githubPromise, bitbucketPromise])
+    //     .then(function(data) {
+    //         // here data is an array of the resolved values from each promise
+    //         // we can now do something with both pieces of data
+    //     })
+    //     .catch(function(error) {
+    //         // handle errors
+    //     });
+
+
+</script>
+<script src="js/keys.js"></script>
+</body>
+</html>
