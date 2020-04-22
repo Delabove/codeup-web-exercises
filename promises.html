@@ -11,7 +11,7 @@
 <script>
     "use strict";
 
-    let url = 'https://api.github.com/users';
+    let url = 'https://api.github.com/users/delabove/events/public';
 
     //FILLED IN THE NECESSARY COMPONENTS  OF THE FETCH
     // fetch(url, {headers: {'Authorization': 'git_KEY'}})
@@ -22,15 +22,26 @@
     // CREATED VARIABLE FOR THE PROMISE
     const gitPromise = fetch(url, {headers: {'Authorization': 'git_KEY'}});
 
-    gitPromise.then( response => {
-        response.json().then( users => {
-            console.log(users);
-            users.forEach( userObj  => {
+    gitPromise.then( response => response.json()
+        .then( events => {
+            console.log(event)
+
+            // do something with the data
+            let generatedHTML= "";
+            for(let event of events) {
+                if(event.type === "PushEvent") {
+                    console.log(event.created_at);
+                    console.log(event.payload.commits[0].message);
+                    break;
+                }
+                console.log('Made it!!')
+            }
+            // users.forEach( userObj  => {
                 // do something with the username login
-                console.log(userObj.login);
-            });
-        });
-    });
+                // console.log(userObj.login);
+            // });
+        })
+    );
 
 
     // const githubPromise = fetch(url, {headers: {'Authorization': 'git_KEY'}});
