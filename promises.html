@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Promises</title>
 
+
 </head>
 <body>
 
+<script src="js/promises.js"></script>
 
 <script>
     "use strict";
@@ -27,7 +29,7 @@
             console.log(event)
 
             // do something with the data
-            let generatedHTML= "";
+            // let generatedHTML= "";
             for(let event of events) {
                 if(event.type === "PushEvent") {
                     console.log(event.created_at);
@@ -36,28 +38,32 @@
                 }
                 console.log('Made it!!')
             }
-            // users.forEach( userObj  => {
-                // do something with the username login
-                // console.log(userObj.login);
-            // });
+
         })
     );
 
-
-    // const githubPromise = fetch(url, {headers: {'Authorization': 'git_KEY'}});
-    // const bitbucketPromise = fetch('https://api.bitbucket.org/2.0/repositories');
     //
-    // Promise.all([githubPromise, bitbucketPromise])
-    //     .then(function(data) {
-    //         // here data is an array of the resolved values from each promise
-    //         // we can now do something with both pieces of data
-    //     })
-    //     .catch(function(error) {
-    //         // handle errors
+    // function userCommit(username) {
+    //     return new Promise((resolve, reject) => {
+    //         for(let event of events) {
+    //             if(event.type === "PushEvent") {
+    //                 console.log(event.created_at);
+    //                 console.log(event.payload.commits[0].message);
+    //                 break;
+    //                 console.log(userCommit())
+    //             }
+    //
+    //         }
     //     });
+    // }
 
 
 </script>
+
+
+
+
+
 <script src="js/keys.js"></script>
 </body>
 </html>
