@@ -68,7 +68,18 @@ console.log(`The average years of experience per user is ${totalYearsOfExperienc
 
 
 
+const userLongestEmail = users.reduce(function (acc,user ) {
+        return acc + Math.max(user.email)}, 0);
+
+    console.log(userLongestEmail);
+
+;
 
 
 
 // Use .reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
+
+
+// const usersNames = users.reduce(function (acc,  user) {
+//             return acc + user.name.join()}, "  ");
+// console.log(`Your instructors are: ${usersNames}`);
