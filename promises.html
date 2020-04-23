@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promises</title>
+
+
+</head>
+<body>
+
+<script src="js/promises.js"></script>
+
+<script>
+    "use strict";
+
+
+
+    //FILLED IN THE NECESSARY COMPONENTS  OF THE FETCH
+    // fetch(url, {headers: {'Authorization': 'git_KEY'}})
+    //     .then(response => console.log(response))
+    //     .catch(error => console.error(error));
+
+
+
+    // CREATED VARIABLE FOR THE PROMISE
+    const gitPromise = fetch(url, {headers: {'Authorization': 'git_KEY'}});
+
+    gitPromise.then( response => response.json()
+        .then( events => {
+            console.log(event)
+
+            // do something with the data
+            // let generatedHTML= "";
+            for(let event of events) {
+                if(event.type === "PushEvent") {
+                    console.log(event.created_at);
+                    console.log(event.payload.commits[0].message);
+                    break;
+                }
+                console.log('Made it!!')
+            }
+
+        })
+    );
+
+    // ANSWER:
+
+    function getUserLastCommit() {
+        let url = `https://api.github.com/users/${username}/events/public`;
+        console.log(url);
+        return fetch(url, {headers: {'Authorization':  `token${git_KEY}`}})
+        .then(response => response.json()
+            .then (data => console.log(data.created_at) )
+
+    }
+
+    // getUserLastCommit('username') .then( 'lastCommitDate', lastComm)//TEST
+
+</script>
+
+
+
+
+
+<script src="js/keys.js"></script>
+</body>
+</html>
