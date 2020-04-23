@@ -34,12 +34,12 @@
             box-shadow: black;
         }
         #dayForecast{
-            margin: 1em 1em;
+            margin-left: 0;
             padding: .5em;
         }
         .card {
-            margin-left: 1.7em;
-            width: 15rem;
+            margin-left: .5em;
+            width: 13rem;
             box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.17);
 
         }
@@ -75,7 +75,7 @@
 </head>
 <body>
 
-<!--<main class="container">-->
+<main class="container">
 
 <!--BLUE HEADER-->
 <div class="row bg-primary">
@@ -103,7 +103,7 @@
 
 
 <!--CARDS-->
-    <div class="row"  id="dayForecast"></div>
+    <div class="row" id="dayForecast"></div>
 
 <!--MAP-->
 
@@ -111,7 +111,7 @@
 <div class="marker"></div>
 
 
-<!--</main>-->
+</main>
 
 
 
@@ -248,15 +248,15 @@ new map
 
     marker.setPopup(dallasPopup);
 
-
-//ADD MARKER FUNCTION
-    function addMarker(coords) {
-        var marker = new mapboxgl.Marker();
-        center: 'coords'
-        .addTo(map);
 //
-
-    }
+// //ADD MARKER FUNCTION
+//     function addMarker(coords) {
+//         var marker = new mapboxgl.Marker();
+//         center: 'coords'
+//         .addTo(map);
+// //
+//
+//     }
 </script>
 
 
