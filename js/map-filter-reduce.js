@@ -40,7 +40,7 @@ const users = [
 
 // Use .filter to create an array of user objects where each user object has at least 3 languages in the languages array.
 
-const threeLanguageArray = users.filter(user => user.languages.length = 3 );
+const threeLanguageArray = users.filter(user => user.languages.length >= 3 );
     console.log(threeLanguageArray);
 
 
@@ -68,8 +68,15 @@ console.log(`The average years of experience per user is ${totalYearsOfExperienc
 
 
 
-const userLongestEmail = users.reduce(function (acc,user ) {
-        return acc + Math.max(user.email)}, 0);
+const userLongestEmail = users.reduce((longest, user ) => {
+
+    if(user.email.length > longest.length){
+        return user.email;
+    } else {
+        return longest;
+    }
+    }, ' ');
+
 
     console.log(userLongestEmail);
 
@@ -80,6 +87,27 @@ const userLongestEmail = users.reduce(function (acc,user ) {
 // Use .reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
 
 
-// const usersNames = users.reduce(function (acc,  user) {
-//             return acc + user.name.join()}, "  ");
-// console.log(`Your instructors are: ${usersNames}`);
+const usersNames = users.reduce(function (acc,  user) {
+            return acc + user.name.join()}, "  ");
+console.log(`Your instructors are: ${usersNames}`);
+
+
+// EXTRA EXERCISE -REAL WORLD EXAMPLE
+
+
+const laureatesElement = document.getElementById('laureates');
+
+const url = 'http://api.nobelprize.org/v1/laureate.json';
+fetch(url)
+    .then((data) => data.json())
+    .then((data)=>{
+        console.log(data);
+        const { laureates } = data;
+        laureatesElement.innerHTML = laureates
+            .filter( laureate => laureate.prizes.length > 1 )
+            .map( laureate => `${laureate.firstname} ${laureate.surname} won ${laureate.prizes.length} prizes.` )
+            .reduce((html, laureateDesc) => {
+                return html + `<li>${laureateDesc}</li>`
+            }, '')
+
+    });
