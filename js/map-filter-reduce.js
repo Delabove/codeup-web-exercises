@@ -92,6 +92,44 @@ const usersNames = users.reduce(function (acc,  user) {
 console.log(`Your instructors are: ${usersNames}`);
 
 
+
+// walkthrough corrections:
+
+
+const longestEmail = users.reduce((longest, user) => {
+    if (user.email.length > longest.length) {
+        return user.email;
+    } else {
+        return longest;
+    }
+}, '');
+
+console.log(longestEmail);
+
+const everyone = users.reduce((names, user) => {
+    if (names !== '') {
+        names += ', ';
+    }
+    return names + user.name;
+}, '');
+
+console.log(everyone);
+
+//Using join.
+console.log('Using join instead of reduce.', users.map( user => user.name ).join( ', ' ));
+
+const allLanguages = users.reduce((languages, user) => {
+    user.languages.forEach((language) => {
+        if(!languages.includes(language)){ // If we don't already have the language
+            languages.push(language)       // Add it here.
+        }
+    });
+    return languages;
+}, []);
+
+
+
+
 // EXTRA EXERCISE -REAL WORLD EXAMPLE
 
 
